@@ -2,6 +2,8 @@ import React from "react";
 import Auth from "../../services/Auth";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import Header from "../parts/Header";
+import '../../css/login.css';
 
 function LoginPage() {
     const login = async (loginData) => {
@@ -20,12 +22,9 @@ function LoginPage() {
 
     return (
         <div className="wrapper">
+            <Header />
             <div className="container">
                 <div className="row mt-4">
-                    <div className="col-md-6 " style={{ color: "white" }}>
-                        <h1>SDA</h1>
-                        <p>Starter template</p>
-                    </div>
 
                     <div className="col-md-6">
                         <div className="row">

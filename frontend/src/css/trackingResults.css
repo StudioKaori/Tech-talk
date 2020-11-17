@@ -1,0 +1,28 @@
+@import url('./style.css');
+@import url('./content.css');
+
+.display-status{
+  width: fit-content;
+  margin: auto;
+  font-size: var(--font-L);
+  text-align: center;
+  font-family: 'Black Ops One', cursive;
+  grid-column: 1/3;
+}
+
+.sort {
+  text-align: right;
+}
+
+.sort select{
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  background-color: var(--font-dark-light);
+  color: var(--font-dark);
+  border: 0;
+  font-size: var(--font-S);
+  padding: 6px;
+  background-color: #9c9c9c;
+}
