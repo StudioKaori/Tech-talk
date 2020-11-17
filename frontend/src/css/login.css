@@ -1,19 +1,19 @@
-@import url('./style.css');
+@import url("./style.css");
 
-.seachbox {
+.inputbox {
   width: fit-content;
-  margin: 30px auto;
-  background-color: var(--font-dark-light);
+  margin: 50px auto;
+  background-color: #0000008c;
   border-radius: 8px;
+  color: var(--brand-color);
+  padding: 40px;
 }
-.seachbox label{
-  font-family: 'Black Ops One', cursive;
-  margin: 0 8px;
+.inputbox label {
 }
 
-.seachbox input{
+.inputbox input {
   display: inline-block;
-  background-color: var(--font-dark-light);
+  background-color: var(--accent-color-dark);
   color: var(--font-dark);
   border: 0;
   font-size: var(--font-M);
@@ -22,12 +22,12 @@
   background-color: #9c9c9c;
 }
 
-.seachbox a{
+.inputbox a {
   display: inline-block;
 }
 
-.seachbox span{
-  color: var( --font-light);
+.inputbox span {
+  color: var(--font-light);
   display: inline-block;
   font-size: 20px;
   height: 32px;
@@ -35,4 +35,14 @@
   margin: auto 5px;
   text-align: center;
   width: 32px;
+}
+
+.inputbox button {
+  background-color: var(--brand-color);
+  border-radius: var(--input-radius);
+  color: var(--font-light);
+  margin-top: 15px;
+  padding: 10px;
+  border: 0;
+  display: inline-block;
 }

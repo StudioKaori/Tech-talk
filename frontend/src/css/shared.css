@@ -1,50 +1,55 @@
 /* This file is for common style of the webpage. */
 
 /* company logo font */
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
 
 body {
   color: var(--font-light);
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: var(--font-M);
   margin: 0;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: top;
   background-image: url("../assets/bg.jpg");
   background-color: #000000;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gugi", cursive;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 h1 {
-  font-family: 'Gugi', cursive;
   color: var(--brand-color);
 }
 
-h1 i{
+h1 i {
   padding-left: 8px;
 }
 
 h2 {
-  font-family: 'Gugi', cursive;
   color: var(--accent-color);
 }
 
-
 h3 {
-  font-family: 'Gugi', cursive;
   color: var(--accent-color);
   font-size: var(--font-M);
   background-color: var(--accent-color-dark);
   border-radius: var(--h-radius);
   display: block;
   padding: 8px 15px;
+}
+
+h4 {
+  margin-bottom: 20px;
 }
 
 .section-margin {
@@ -71,14 +76,14 @@ h3 {
   border-radius: 50%;
   text-align: center;
   overflow: hidden;
-  transition: .4s;
+  transition: 0.4s;
   width: 40px;
   height: 40px;
   display: inline-block;
 }
 
 .floating-email-btn a {
-  color: var( --accent-color);
+  color: var(--accent-color);
 }
 
 /* reset user agent stylesheet */

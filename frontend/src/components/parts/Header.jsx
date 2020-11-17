@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function Header() {
   // for navigation drawer
   window.addEventListener(
     "resize",
     function () {
-      console.log("header, load");
       resizeNav();
     },
     false
   );
+
+  useEffect(() => {
+    resizeNav();
+  }, []);
 
   function resizeNav() {
     const mySidenav = document.getElementById("mySidenav");
@@ -39,7 +42,7 @@ export default function Header() {
         <div className="header-menu-wrapper">
           <div className="header-menu-log">
             <h1>
-              TECH-TALK<i class="fas fa-share-alt"></i>
+              TECH-TALK<i className="fas fa-share-alt"></i>
             </h1>
           </div>
 

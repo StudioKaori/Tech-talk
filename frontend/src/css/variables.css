@@ -1,12 +1,12 @@
 :root {
   --accent-color-dark: #284452;
-  --accent-color-light: #E87461;
+  --accent-color-light: #e87461;
   --accent-color: #ffffff;
   --box-shadow-PC: 0 0 10px #44444454;
-  --brand-color:#4C87A9;
+  --brand-color: #4c87a9;
   --bg-dark-light: #525252;
   --font-dark-light: #525252;
-  --font-dark: #3D5467;
+  --font-dark: #3d5467;
   --font-light: #e7e7e7;
   --font-L: 18px;
   --font-M: 14px;
@@ -17,4 +17,5 @@
   --section-margin: 30px;
   --section-radius: 5px;
   --h-radius: 20px;
+  --input-radius: 5px;
 }
