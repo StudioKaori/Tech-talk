@@ -1,24 +1,25 @@
 import Api from "./Api";
+const baseUrl = '/articles'
 
 class PostsApi {
     getAllPosts() {
-        return Api.get('/posts');
+        return Api.get(baseUrl);
     }
 
     getPostById(id) {
-        return Api.get('/posts/'+id);
+        return Api.get(baseUrl + '/'+id);
     }
 
     createPost(post) {
-        return Api.post('/posts', post);
+        return Api.post(baseUrl, post);
     }
 
     updatePost(post) {
-        return Api.put('/posts', post);
+        return Api.put(baseUrl, post);
     }
 
     deletePost(id) {
-        return Api.delete('/posts/'+id);
+        return Api.delete(baseUrl + '/'+id);
     } 
 }
 
