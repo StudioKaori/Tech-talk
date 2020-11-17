@@ -19,6 +19,8 @@ import ChatPage from './components/chat/ChatPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
+
+  // update login, Auth service set logged in status
   Auth.bindLoggedInStateSetter(setLoggedIn);
   
   const loggedInRouter = (
@@ -43,6 +45,7 @@ function App() {
             </Router>
   );
 
+  // return depends on login status, if not logged in, return loginPage
   return (loggedIn ? loggedInRouter : <LoginPage/>);
 }
 

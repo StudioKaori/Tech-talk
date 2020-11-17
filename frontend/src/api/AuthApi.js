@@ -1,6 +1,8 @@
 import Api from "./Api";
 
 class AuthApi {
+    // get secret token
+    // {email, password} -> json format
     authenticate({email, password}) {
         return Api.post('/authenticate', {email, password});
     }

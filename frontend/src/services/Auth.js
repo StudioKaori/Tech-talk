@@ -50,6 +50,7 @@ class Auth {
         return window.sessionStorage.getItem(tokenKey);
     }
 
+    // set token to the session strage
     _setToken(token) {
         window.sessionStorage.setItem(tokenKey, token);
     }
