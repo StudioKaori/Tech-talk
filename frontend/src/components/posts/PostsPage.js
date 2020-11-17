@@ -1,8 +1,8 @@
 import React from "react";
-import articlesApi from "../../api/ArticleApi";
+import postApi from "../../api/PostsApi";
 
-console.log("articlesApi.getAllArticles()");
-console.log(articlesApi.getAllArticles());
+console.log("postApi.getAllPosts()");
+console.log(postApi.getAllPosts());
 function PostsPage() {
     return (
         <div>
