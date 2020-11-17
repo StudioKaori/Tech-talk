@@ -21,6 +21,7 @@ public class JWTEncoderDecoder {
     private static final String ALGORITHM_NAME = "RSA";
     private static final int KEY_SIZE = 2 * 1024;
     private static final String ISSUER = "sda";
+    // good practice to set expiry date
     private static final long TOKEN_MAX_AGE_MILLI_SECONDS = 3 * 24 * 60 * 60 * 1000;
 
     private final Algorithm algorithm;
