@@ -16,18 +16,22 @@ body {
   background-color: #000000;
 }
 
+button{
+  margin-left: 1%;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6, p{
   font-family: "Gugi", cursive;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-h1 {
+h1, h4, label, p, .nav-link{
   color: var(--brand-color);
 }
 

@@ -2,11 +2,11 @@ import React from "react";
 import Api from "../../api/Api";
 import PostForm from "./PostsForm";
 import PostCard from "./PostCard";
-import PostUpdateForm from "./PostUpdateForm";
 import { useState, useEffect } from "react";
 
 export default function Posts() {
     const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState("");
 
     const createPost = (postData) => {
         Api.post("/articles", postData)
