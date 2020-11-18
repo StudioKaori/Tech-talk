@@ -21,7 +21,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="wrapper">
+    <div className="body_wrapper">
       <Header />
 
       <div className="inputbox">
