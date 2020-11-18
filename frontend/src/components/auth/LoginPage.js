@@ -23,7 +23,7 @@ function LoginPage() {
   return (
     <div className="body_wrapper">
       <Header />
-
+      
       <div className="inputbox">
         <LoginForm onSubmit={login} />
       </div>
