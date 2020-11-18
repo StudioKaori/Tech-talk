@@ -1,13 +1,17 @@
 import React from "react";
 import postApi from "../../api/PostsApi";
+import PostForm from "./PostsForm";
 
-console.log("postApi.getAllPosts()");
+
 console.log(postApi.getAllPosts());
-function PostsPage() {
+export default function PostsPage() {
+    const createPost = (postData) => {
+        console.log(postData);
+    }
+
     return (
         <div>
+        <PostForm onSubmit={createPost}/>
         </div>
     );
 }
-
-export default PostsPage;
