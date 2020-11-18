@@ -3,8 +3,10 @@ package se.kth.sda.tech.comments;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.tech.articles.Article;
 import se.kth.sda.tech.reactions.Reaction;
+import se.kth.sda.tech.user.User;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -21,6 +23,9 @@ public class Comment {
 
     @ManyToOne
     private Article article;
+
+    @OneToOne
+    private User user;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -78,5 +83,13 @@ public class Comment {
 
     public void setArticle(Article article) {
         this.article = article;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

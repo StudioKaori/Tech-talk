@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.tech.comments.Comment;
 import se.kth.sda.tech.reactions.Reaction;
 import se.kth.sda.tech.topics.Topic;
+import se.kth.sda.tech.user.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,6 +27,9 @@ public class Article {
 
     @ManyToMany
     private List<Topic> topics;
+
+    @OneToOne
+    private User user;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -98,5 +102,13 @@ public class Article {
 
     public void setReaction(Reaction articleReaction) {
         this.reaction = articleReaction;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
