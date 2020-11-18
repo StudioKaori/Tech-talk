@@ -1,0 +1,26 @@
+.one-post {
+  width: fit-content;
+  margin: 50px auto;
+  background-color: #0000008c;
+  border-radius: 8px;
+  padding: 40px;
+  margin-top: 30px;
+}
+
+.posts button {
+  background-color: var(--brand-color);
+  border-radius: var(--input-radius);
+  color: var(--font-light);
+  margin-top: 15px;
+  padding: 10px;
+  border: 0;
+  display: inline-block;
+}
+
+.post-menu {
+  display: flex;
+  column-gap: 10px;
+}
+
+.post-option {
+}

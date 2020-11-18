@@ -1,0 +1,23 @@
+/* This styles introduction section. */
+
+.introduction {
+  text-align: center;
+  padding: 0;
+}
+
+.header_textbox {
+  margin: 40px auto 5px auto;
+  width: 340px;
+}
+
+.test-instruction {
+  margin-top: 20px;
+  font-family: 'Black Ops One', cursive;
+  line-height: 170%;
+}
+
+@media (min-width: 750px) {
+  .introduction {
+    padding: 10px;
+  }
+}
