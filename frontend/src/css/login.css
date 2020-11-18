@@ -1,0 +1,48 @@
+@import url("./style.css");
+
+.inputbox {
+  width: fit-content;
+  margin: 50px auto;
+  background-color: #0000008c;
+  border-radius: 8px;
+  color: var(--brand-color);
+  padding: 40px;
+}
+.inputbox label {
+}
+
+.inputbox input {
+  display: inline-block;
+  background-color: var(--accent-color-dark);
+  color: var(--font-dark);
+  border: 0;
+  font-size: var(--font-M);
+  height: 30px;
+  padding: 6px;
+  background-color: #9c9c9c;
+}
+
+.inputbox a {
+  display: inline-block;
+}
+
+.inputbox span {
+  color: var(--font-light);
+  display: inline-block;
+  font-size: 20px;
+  height: 32px;
+  line-height: 32px;
+  margin: auto 5px;
+  text-align: center;
+  width: 32px;
+}
+
+.inputbox button {
+  background-color: var(--brand-color);
+  border-radius: var(--input-radius);
+  color: var(--font-light);
+  margin-top: 15px;
+  padding: 10px;
+  border: 0;
+  display: inline-block;
+}
