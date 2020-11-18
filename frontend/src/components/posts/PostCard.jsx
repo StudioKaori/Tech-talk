@@ -3,6 +3,7 @@ import PostUpdateForm from "./PostUpdateForm";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
     const [isUpdating, setIsUpdating] = useState(false);
+    const [body, setBody] = useState("");
 
     const handleUpdateClick = () => {
         setIsUpdating(true);
@@ -14,8 +15,26 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
         <div className="card mt-4">
             <div className="card-body">
                 <h4>{post.id}</h4>
-                
+
                 <p>{post.body}</p>
+
+                <div className="form-group">
+                        <label>Comment: </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="What do you think about this"
+                            value={body}
+                            onChange={e => setBody(e.target.value)} />
+                    </div>
+
+                    <div className="form-group">
+                        <button
+                            className="btn btn-info"
+                            onClick={() => console.log({body})}>
+                            Share
+                        </button>
+                    </div>
 
                 <div>
                     <button className="btn btn-danger" onClick={() => onDeleteClick(post)}>
