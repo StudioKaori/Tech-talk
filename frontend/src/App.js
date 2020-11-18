@@ -16,6 +16,7 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import Posts from "./components/posts/Posts";
 import ChatPage from './components/chat/ChatPage';
+import Comments from "./components/comments/Comments";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -32,6 +33,9 @@ function App() {
                         <Route path="/posts">
                             <Posts/>
                         </Route>
+                         <Route path ="/comments">
+                             <Comments/>
+                             </Route>
 
                         <Route path="/chat">
                             <ChatPage/>
