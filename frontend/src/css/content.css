@@ -1,20 +1,50 @@
+.one-post button {
+  border-radius: 10px;
+}
+
 .one-post {
-  width: fit-content;
-  margin: 50px auto;
+  width: 100%;
+  margin: auto;
   background-color: #0000008c;
   border-radius: 8px;
   padding: 40px;
   margin-top: 30px;
+  color: var(--font-dark-light);
 }
 
-.posts button {
+.one-post h6 {
+  border-top: 1px solid var(--font-dark-light);
+  border-bottom: 1px solid var(--font-dark-light);
+  margin: 30px 0 10px 0;
+  padding: 10px 0 10px 0;
+}
+
+.one-post button {
   background-color: var(--brand-color);
   border-radius: var(--input-radius);
   color: var(--font-light);
   margin-top: 15px;
-  padding: 10px;
+  padding: 3px 6px;
+  margin-right: 5px;
   border: 0;
   display: inline-block;
+  font-size: var(--font-S);
+}
+
+.comment-post input {
+  width: 90%;
+  margin: 10px 0;
+  font-size: var(--font-S);
+  display: inline-block;
+}
+
+.post-text {
+  color: var(--font-dark-light);
+}
+
+.poster {
+  text-align: right;
+  margin-bottom: 15px;
 }
 
 .post-menu {
@@ -23,4 +53,14 @@
 }
 
 .post-option {
+  width: 100%;
+  text-align: right;
+}
+
+.reaction {
+  width: 100%;
+}
+
+.comment {
+  display: flex;
 }
