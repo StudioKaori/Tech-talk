@@ -73,6 +73,13 @@ function Navbar({ onLogout }) {
                 </Link>
               </li>
 
+
+              <li>
+                <Link to="/comments" className="nav-link">
+                  COMMENTS
+                </Link>
+              </li>
+
               <li>
                 <Link to="/chat" className="nav-link">
                   CHAT
