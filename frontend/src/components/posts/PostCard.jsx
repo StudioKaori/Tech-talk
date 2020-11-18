@@ -1,50 +1,64 @@
 import React, { useReducer, useState } from "react";
 import PostUpdateForm from "./PostUpdateForm";
 
-export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
-    const [isUpdating, setIsUpdating] = useState(false);
-    const [body, setBody] = useState("");
+export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [body, setBody] = useState("");
 
-    const handleUpdateClick = () => {
-        setIsUpdating(true);
-    };
+  const handleUpdateClick = () => {
+    setIsUpdating(true);
+  };
 
-    return isUpdating ?
-        <PostUpdateForm oldPost={post} onUpdateClick={(updatedPost) => { setIsUpdating(false); onUpdateClick(updatedPost); }} />
-        :
-        <div className="card mt-4">
-            <div className="card-body">
-                <h4>{post.id}</h4>
+  console.log(post);
 
-                <p>{post.body}</p>
+  return isUpdating ? (
+    <PostUpdateForm
+      oldPost={post}
+      onUpdateClick={(updatedPost) => {
+        setIsUpdating(false);
+        onUpdateClick(updatedPost);
+      }}
+    />
+  ) : (
+    <div className="card mt-4">
+      <div className="card-body">
+        <h4>{post.id}</h4>
 
-                <div className="form-group">
-                        <label>Comment: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="What do you think about this"
-                            value={body}
-                            onChange={e => setBody(e.target.value)} />
-                    </div>
+        <p>{post.body}</p>
 
-                    <div className="form-group">
-                        <button
-                            className="btn btn-info"
-                            onClick={() => console.log({body})}>
-                            Share
-                        </button>
-                    </div>
-
-                <div>
-                    <button className="btn btn-danger" onClick={() => onDeleteClick(post)}>
-                        Delete
-                </button>
-
-                    <button className="btn btn-warning" onClick={handleUpdateClick}>
-                        Update
-                    </button>
-                </div>
-            </div>
+        <div className="form-group">
+          <label>Comment: </label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="What do you think about this"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
         </div>
+
+        <div className="form-group">
+          <button
+            className="btn btn-info"
+            onClick={() => console.log({ body })}
+          >
+            Share
+          </button>
+        </div>
+
+        <div>
+          <button
+            className="btn btn-danger"
+            onClick={() => onDeleteClick(post)}
+          >
+            Delete
+          </button>
+
+          <button className="btn btn-warning" onClick={handleUpdateClick}>
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }

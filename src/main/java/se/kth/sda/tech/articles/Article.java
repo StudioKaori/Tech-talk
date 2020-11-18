@@ -28,7 +28,7 @@ public class Article {
     @ManyToMany
     private List<Topic> topics;
 
-    @OneToOne
+    @ManyToOne
     private User user;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
