@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import PostUpdateForm from "./PostUpdateForm";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
@@ -13,7 +13,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
         :
         <div className="card mt-4">
             <div className="card-body">
-                <h1>{post.id}</h1>
+                <h4>{post.id}</h4>
+                
                 <p>{post.body}</p>
 
                 <div>

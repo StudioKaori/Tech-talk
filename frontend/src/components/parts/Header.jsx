@@ -44,6 +44,7 @@ export default function Header() {
             <h1>
               TECH-TALK<i className="fas fa-share-alt"></i>
             </h1>
+            <p>Where business is the talk</p>
           </div>
 
           <div className="mobile-menu">

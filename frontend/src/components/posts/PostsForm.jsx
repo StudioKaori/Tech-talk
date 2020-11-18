@@ -9,6 +9,7 @@ export default function PostForm({onCreateClick}) {
             <div className="card-body">
                 <h4 className="card-title" >Share your thoughts?</h4>
                 <div>
+                
                     <div className="form-group">
                         <label>Post: </label>
                         <input 
