@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export default function PostForm({onSubmit}) {
+export default function PostForm({onCreateClick}) {
     const [body, setBody] = useState("");
     
 
@@ -23,7 +23,7 @@ export default function PostForm({onSubmit}) {
                     <div className="form-group">
                         <button 
                             className="btn btn-info" 
-                            onClick={() => onSubmit({body})}>
+                            onClick={() => onCreateClick({body})}>
                             Share
                         </button>
                     </div>
