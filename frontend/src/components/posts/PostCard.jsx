@@ -25,6 +25,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
         <h4>{post.id}</h4>
 
         <p>{post.body}</p>
+        <p>name : {post.user.name}</p>
+        <p>email : {post.user.email}</p>
 
         <div className="form-group">
           <label>Comment: </label>
