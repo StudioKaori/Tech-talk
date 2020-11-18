@@ -23,8 +23,8 @@ function LoginPage() {
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-md-6 " style={{ color: "white" }}>
-                        <h1>SDA</h1>
-                        <p>Starter template</p>
+                        <h1>Tech Talk</h1>
+                        <p>Where business is the talk</p>
                     </div>
 
                     <div className="col-md-6">
