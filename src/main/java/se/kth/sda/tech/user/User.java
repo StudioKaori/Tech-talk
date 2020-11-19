@@ -1,5 +1,7 @@
 package se.kth.sda.tech.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 import se.kth.sda.tech.articles.Article;
 import se.kth.sda.tech.comments.Comment;
@@ -63,10 +65,12 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -83,6 +87,7 @@ public class User {
         return article;
     }
 
+    @JsonIgnore
     public void setArticle(List <Article> article) {
         this.article = article;
     }
@@ -91,6 +96,7 @@ public class User {
         return comments;
     }
 
+    @JsonIgnore
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }

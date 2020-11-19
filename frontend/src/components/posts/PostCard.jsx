@@ -65,6 +65,20 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
         <h6>
           <i class="fas fa-comments"></i> Comments
         </h6>
+
+        {/* 1-2-1 comment input */}
+        <div className="comment-post">
+          <input
+            type="text"
+            placeholder="What do you think about this?"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          />
+          <button>
+            <i class="fas fa-reply"></i>
+          </button>
+        </div>
+
         {/* 1-2-1 One comment */}
         <article className="comment">
           <div className="comment-poster">
@@ -73,22 +87,21 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               <i class="fas fa-envelope"></i> MAIL
             </button>
           </div>
-          <div className="comment-text">
-            <i class="far fa-comment"></i> Wow! great!
+
+          <div className="one-comment">
+            <div className="comment-text">
+              <i class="far fa-comment"></i> Wow! great!
+            </div>
+            <div>
+              <button className="one-comment-button">
+                <i class="fas fa-thumbs-up"></i> {post.reaction.numLike}
+              </button>
+              <button className="one-comment-button">
+                <i class="fas fa-thumbs-down"></i> {post.reaction.numDislike}
+              </button>
+            </div>
           </div>
         </article>
-
-        <div className="comment-post">
-          <input
-            type="text"
-            placeholder="What do you think about this"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-          <button>
-            <i class="fas fa-reply"></i>
-          </button>
-        </div>
       </section>
     </article>
 
