@@ -5,7 +5,7 @@ export default function PostForm({ onCreateClick }) {
 
   return (
     <section className="quick-post">
-      <h4>Share your thoughts?</h4>
+      <h5>Share your thoughts?</h5>
       <div>
         <textarea
           className="form-control"

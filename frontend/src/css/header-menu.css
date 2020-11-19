@@ -76,18 +76,48 @@ h1 {
   height: auto;
   width: 100%;
   padding-top: 0;
-  padding-right: 40px;
   position: relative;
+}
+
+.header-menu-PC button {
+  background-color: transparent;
+  color: var(--brand-color);
+  border-radius: 10px;
+  border: 1px solid var(--brand-color);
+  font-family: "Gugi", cursive;
+  font-size: var(--font-S);
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--brand-color);
+  border-radius: 10px;
+  border: 1px solid var(--brand-color);
+  font-family: "Gugi", cursive;
+  font-size: var(--font-S);
+  margin-left: 15px;
 }
 
 .pc-icon {
   display: none;
 }
 
+.header-menu li {
+  list-style: none;
+}
+
+.header-menu li a {
+  font-family: "Gugi", cursive;
+  display: block;
+  padding: 0;
+  text-decoration: none;
+  margin: 10px;
+}
+
 @media (min-width: 750px) {
   .header-menu-wrapper {
     margin: auto;
-    width: 800px;
+    width: 700px;
   }
   .header-menu ul {
     display: inline-block;
@@ -97,6 +127,7 @@ h1 {
     padding: 4px;
   }
   .header-menu li a {
+    font-family: "Gugi", cursive;
     display: inline;
     padding: 0;
   }

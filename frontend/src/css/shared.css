@@ -59,6 +59,12 @@ h4 {
   margin-bottom: 20px;
 }
 
+h5 {
+  margin: 20px auto;
+  color: var(--brand-color);
+  font-size: var(--font-L);
+}
+
 .section-margin {
   width: 80%;
   margin: auto;
@@ -99,9 +105,16 @@ ul {
   padding-inline-start: 0;
 }
 
+.body_wrapper {
+  margin-top: 40px;
+  padding-bottom: 50px;
+}
+
 @media (min-width: 750px) {
   .body_wrapper {
     margin: auto;
-    width: 800px;
+    margin-top: 60px;
+    width: 700px;
+    padding-bottom: 50px;
   }
 }
