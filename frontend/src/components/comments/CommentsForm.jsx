@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function CommentsForm({ onCreateClick }) {
   const [body, setBody] = useState("");
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h4 className="card-title">Share your comments?</h4>
+    <div className="one-post card mt-3">
+      <div className="quick-post">
+        <h5 className="comment-post card-title"><i class="far fa-comment"></i> What do you think about this?</h5>
         <div>
-          <div className="form-group">
-            <label>Comment: </label>
+          <div className="">
             <input
               type="text"
+              size="10"
               className="form-control"
-              placeholder="What is on your mind?"
+              placeholder= "Wow ! great !"
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
@@ -34,3 +34,9 @@ export default function CommentsForm({ onCreateClick }) {
    
   );
 }
+
+
+//             <div className="one-comment">
+//               <div className="comment-text">Wow! great!
+//                 
+//             </div>

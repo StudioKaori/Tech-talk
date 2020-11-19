@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import PostUpdateForm from "./PostUpdateForm";
+import Comments from "../comments/Comments";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -20,132 +21,94 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
       }}
     />
   ) : (
-    <article className="one-post">
-      {/* 1-1 Post part */}
-      <section className="post">
-        <h4>
-          <i class="fas fa-newspaper"></i>{" "}
-          {post.body.length > 55
-            ? post.body.substring(0, 55) + "..."
-            : post.body}
-        </h4>
-        <div className="poster">
-          <i class="fas fa-user-alt"></i> {post.user.name}(
+      <article className="one-post">
+        {/* 1-1 Post part */}
+        <section className="post">
+          <h4>
+            <i class="fas fa-newspaper"></i>{" "}
+            {post.body.length > 55
+              ? post.body.substring(0, 55) + "..."
+              : post.body}
+          </h4>
+          <div className="poster">
+            <i class="fas fa-user-alt"></i> {post.user.name}(
           <i class="fas fa-envelope"></i> {post.user.email})
         </div>
-        <div className="post-text">
-          <p>{post.body}</p>
-        </div>
-        <div className="post-menu">
-          <div className="reaction">
-            <button>
-              <i class="fas fa-thumbs-up"></i> {post.reaction.numLike}
-            </button>
-            <button>
-              <i class="fas fa-thumbs-down"></i> {post.reaction.numDislike}
-            </button>
+          <div className="post-text">
+            <p>{post.body}</p>
           </div>
-
-          {post.user.id === user.id ? (
-            <div className="post-option">
-              <button onClick={() => onDeleteClick(post)}>
-                <i class="fas fa-trash-alt"></i> Delete
-              </button>
-
-              <button onClick={handleUpdateClick}>
-                <i class="fas fa-edit"></i> Edit
-              </button>
-            </div>
-          ) : null}
-        </div>
-      </section>
-
-      {/* 1-2 Comments to the post part */}
-      <section className="comments">
-        <h6>
-          <i class="fas fa-comments"></i> Comments
-        </h6>
-
-        {/* 1-2-1 comment input */}
-        <div className="comment-post">
-          <input
-            type="text"
-            placeholder="What do you think about this?"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-          <button>
-            <i class="fas fa-reply"></i>
-          </button>
-        </div>
-
-        {/* 1-2-1 One comment */}
-        <article className="comment">
-          <div className="comment-poster">
-            <i class="fas fa-user-alt"></i> Leo
-            <button>
-              <i class="fas fa-envelope"></i> MAIL
-            </button>
-          </div>
-
-          <div className="one-comment">
-            <div className="comment-text">
-              <i class="far fa-comment"></i> Wow! great!
-            </div>
-            <div>
-              <button className="one-comment-button">
+          <div className="post-menu">
+            <div className="reaction">
+              <button>
                 <i class="fas fa-thumbs-up"></i> {post.reaction.numLike}
               </button>
-              <button className="one-comment-button">
+              <button>
                 <i class="fas fa-thumbs-down"></i> {post.reaction.numDislike}
               </button>
             </div>
+
+            {post.user.id === user.id ? (
+              <div className="post-option">
+                <button onClick={() => onDeleteClick(post)}>
+                  <i class="fas fa-trash-alt"></i> Delete
+              </button>
+
+                <button onClick={handleUpdateClick}>
+                  <i class="fas fa-edit"></i> Edit
+              </button>
+              </div>
+            ) : null}
           </div>
-        </article>
-      </section>
-    </article>
 
-    // <div className="card mt-4">
-    //   <div className="card-body">
-    //     <h4>{post.id}</h4>
+          <Comments />
+        </section>
 
-    //     <p>{post.body}</p>
-    //     <p>name : {post.user.name}</p>
-    //     <p>email : {post.user.email}</p>
+        {/* 1-2 Comments to the post part */}
+        
+      </article>
 
-    //     <div className="form-group">
-    //       <label>Comment: </label>
-    //       <input
-    //         type="text"
-    //         className="form-control"
-    //         placeholder="What do you think about this"
-    //         value={body}
-    //         onChange={(e) => setBody(e.target.value)}
-    //       />
-    //     </div>
+      // <div className="card mt-4">
+      //   <div className="card-body">
+      //     <h4>{post.id}</h4>
 
-    //     <div className="form-group">
-    //       <button
-    //         className="btn btn-info"
-    //         onClick={() => console.log({ body })}
-    //       >
-    //         Share
-    //       </button>
-    //     </div>
+      //     <p>{post.body}</p>
+      //     <p>name : {post.user.name}</p>
+      //     <p>email : {post.user.email}</p>
 
-    //     <div>
-    //       <button
-    //         className="btn btn-danger"
-    //         onClick={() => onDeleteClick(post)}
-    //       >
-    //         Delete
-    //       </button>
+      //     <div className="form-group">
+      //       <label>Comment: </label>
+      //       <input
+      //         type="text"
+      //         className="form-control"
+      //         placeholder="What do you think about this"
+      //         value={body}
+      //         onChange={(e) => setBody(e.target.value)}
+      //       />
+      //     </div>
 
-    //       <button className="btn btn-warning" onClick={handleUpdateClick}>
-    //         Update
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
-  );
+      //     <div className="form-group">
+      //       <button
+      //         className="btn btn-info"
+      //         onClick={() => console.log({ body })}
+      //       >
+      //         Share
+      //       </button>
+      //     </div>
+
+      //     <div>
+      //       <button
+      //         className="btn btn-danger"
+      //         onClick={() => onDeleteClick(post)}
+      //       >
+      //         Delete
+      //       </button>
+
+      //       <button className="btn btn-warning" onClick={handleUpdateClick}>
+      //         Update
+      //       </button>
+      //     </div>
+      //   </div>
+      // </div>
+    );
 }
+

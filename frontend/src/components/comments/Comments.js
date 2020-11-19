@@ -10,10 +10,9 @@ export default function Comments() {
   const [user, setUser] = useState("");
 
   const createComment = (commentData) => {
+    commentData.user = user;
     Api.post("/comments", commentData).then((res) => {
-      res.data.user = user;
-      console.log(res.data);
-      setComments([...comments, res.data]);
+      setComments([res.data, ...comments]);
     });
   };
 
