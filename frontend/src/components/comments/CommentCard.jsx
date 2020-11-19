@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CommentsUpdateForm from "./CommentsUpdateForm";
+import Api from "../../api/Api";
 
 export default function CommentCard({
   comment,
@@ -9,9 +10,24 @@ export default function CommentCard({
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [body, setBody] = useState("");
+  const [reaction, setReaction] = useState(comment.reaction);
 
   const handleUpdateClick = () => {
     setIsUpdating(true);
+  };
+
+  const incrementLike = () => {
+    const url = "/reactions/" + reaction.id + "?incrementTarget=like";
+    Api.put(url, reaction).then((r) => {
+      setReaction(r.data);
+    });
+  };
+
+  const incrementDislike = () => {
+    const url = "/reactions/" + reaction.id + "?incrementTarget=dislike";
+    Api.put(url, reaction).then((r) => {
+      setReaction(r.data);
+    });
   };
 
   return isUpdating ? (
@@ -33,13 +49,18 @@ export default function CommentCard({
           <i className="far fa-comment"></i> {comment.body}
         </div>
         <div className="comment-option">
-          <button className="one-comment-button">
-            <i className="fas fa-thumbs-up"></i> 1
-          </button>
-          <button className="one-comment-button">
-            <i className="fas fa-thumbs-down"></i> 0
-          </button>
-          <i className="fas fa-envelope"></i> {comment.user.email}
+          <div className="comment-option-reaction">
+            <button className="one-comment-button" onClick={incrementLike}>
+              <i className="fas fa-thumbs-up"></i> {reaction.numLike}
+            </button>
+            <button className="one-comment-button" onClick={incrementDislike}>
+              <i className="fas fa-thumbs-down"></i> {reaction.numDislike}
+            </button>
+            <div className="comment-option-email">
+              <i className="fas fa-envelope"></i> {comment.user.email}
+            </div>
+          </div>
+
           {comment.user.id === user.id ? (
             <div className="comment-edit">
               <button

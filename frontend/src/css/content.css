@@ -143,9 +143,20 @@
   color: rgb(172, 172, 172);
 }
 
+.comment-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-option-email {
+  display: inline;
+  font-size: 10px;
+  margin-left: 10px;
+}
+
 .comment-edit {
   display: inline;
-  width: 100%;
   text-align: right;
 }
 
