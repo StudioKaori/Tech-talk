@@ -10,6 +10,7 @@
   padding: 40px;
   margin-top: 30px;
   color: var(--font-dark-light);
+  border: 1px solid #4c87a98c;
 }
 
 .one-post h6 {
@@ -28,7 +29,7 @@
   margin-right: 5px;
   border: 0;
   display: inline-block;
-  font-size: var(--font-S);
+  font-size: var(--font-XS);
 }
 
 .comment-post input {
@@ -63,6 +64,26 @@
 
 .comment {
   display: flex;
+  margin-top: 20px;
+}
+
+.one-comment {
+  margin: 0;
+  width: 100%;
+}
+
+.one-post .one-comment-button {
+  margin: 5px 5px 0 0;
+  padding: 2px;
+  font-size: 6px;
+  background-color: transparent;
+}
+
+.comment-text {
+  background-color: #4c87a998;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
 }
 
 .quick-post {
@@ -74,9 +95,41 @@
   background-color: var(--brand-color);
   border: none;
   margin-top: 20px;
-  background-color: var(--accent-color-dark);
 }
 
 .quick-post textarea {
-  background-color: var(--accent-color-dark);
+  background-color: #4c87a998;
+  border: none;
+  color: white;
+}
+
+.quick-post textarea:focus {
+  background-color: #4c87a9;
+  border: none;
+  color: white;
+}
+
+.quick-post textarea::placeholder {
+  color: rgb(172, 172, 172);
+}
+
+.comment-post {
+  margin-top: 20px;
+}
+
+.comment-post input {
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #4c87a998;
+  border: none;
+}
+
+.comment-post input:focus {
+  background-color: #4c87a9;
+  border: none;
+}
+
+.comment-post input::placeholder {
+  color: rgb(172, 172, 172);
 }

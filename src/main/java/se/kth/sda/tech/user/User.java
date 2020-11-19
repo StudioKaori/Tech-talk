@@ -87,6 +87,7 @@ public class User {
         return article;
     }
 
+    @JsonIgnore
     public void setArticle(List <Article> article) {
         this.article = article;
     }
@@ -95,6 +96,7 @@ public class User {
         return comments;
     }
 
+    @JsonIgnore
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
