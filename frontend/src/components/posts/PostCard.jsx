@@ -3,8 +3,6 @@ import PostUpdateForm from "./PostUpdateForm";
 import Api from "../../api/Api";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
-  console.log("PostCard?");
-
   const [isUpdating, setIsUpdating] = useState(false);
   const [body, setBody] = useState("");
   const [reaction, setReaction] = useState(post.reaction);
@@ -14,19 +12,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
   };
 
   const incrementLike = () => {
-    console.log("like?");
     const url = "/reactions/" + reaction.id + "?incrementTarget=like";
     Api.put(url, reaction).then((r) => {
-      console.log("like", r);
       setReaction(r.data);
     });
   };
 
   const incrementDislike = () => {
-    console.log("dislike?");
     const url = "/reactions/" + reaction.id + "?incrementTarget=dislike";
     Api.put(url, reaction).then((r) => {
-      console.log("dislike", r);
       setReaction(r.data);
     });
   };
@@ -103,9 +97,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
         <article className="comment">
           <div className="comment-poster">
             <i class="fas fa-user-alt"></i> Leo
-            <button>
-              <i class="fas fa-envelope"></i> MAIL
-            </button>
           </div>
 
           <div className="one-comment">
@@ -118,6 +109,10 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
               </button>
               <button className="one-comment-button">
                 <i class="fas fa-thumbs-down"></i> 0
+              </button>
+
+              <button className="one-comment-button">
+                <i class="fas fa-envelope"></i>
               </button>
             </div>
           </div>
