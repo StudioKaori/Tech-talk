@@ -113,6 +113,14 @@
   color: rgb(172, 172, 172);
 }
 
+.comment-poster {
+  background-color: #000000;
+  margin-right: 10px;
+  border-radius: 10px;
+  font-size: var(--font-S);
+  text-align: center;
+}
+
 .comment-post {
   margin-top: 20px;
 }

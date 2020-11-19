@@ -1,15 +1,35 @@
 import React, { useReducer, useState } from "react";
 import PostUpdateForm from "./PostUpdateForm";
+import Api from "../../api/Api";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
+  console.log("PostCard?");
+
   const [isUpdating, setIsUpdating] = useState(false);
   const [body, setBody] = useState("");
+  const [reaction, setReaction] = useState(post.reaction);
 
   const handleUpdateClick = () => {
     setIsUpdating(true);
   };
 
-  console.log(post);
+  const incrementLike = () => {
+    console.log("like?");
+    const url = "/reactions/" + reaction.id + "?incrementTarget=like";
+    Api.put(url, reaction).then((r) => {
+      console.log("like", r);
+      setReaction(r.data);
+    });
+  };
+
+  const incrementDislike = () => {
+    console.log("dislike?");
+    const url = "/reactions/" + reaction.id + "?incrementTarget=dislike";
+    Api.put(url, reaction).then((r) => {
+      console.log("dislike", r);
+      setReaction(r.data);
+    });
+  };
 
   return isUpdating ? (
     <PostUpdateForm
@@ -38,11 +58,11 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
         </div>
         <div className="post-menu">
           <div className="reaction">
-            <button>
-              <i class="fas fa-thumbs-up"></i> {post.reaction.numLike}
+            <button onClick={incrementLike}>
+              <i class="fas fa-thumbs-up"></i> {reaction.numLike}
             </button>
-            <button>
-              <i class="fas fa-thumbs-down"></i> {post.reaction.numDislike}
+            <button onClick={incrementDislike}>
+              <i class="fas fa-thumbs-down"></i> {reaction.numDislike}
             </button>
           </div>
 
@@ -94,58 +114,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
             </div>
             <div>
               <button className="one-comment-button">
-                <i class="fas fa-thumbs-up"></i> {post.reaction.numLike}
+                <i class="fas fa-thumbs-up"></i> 1
               </button>
               <button className="one-comment-button">
-                <i class="fas fa-thumbs-down"></i> {post.reaction.numDislike}
+                <i class="fas fa-thumbs-down"></i> 0
               </button>
             </div>
           </div>
         </article>
       </section>
     </article>
-
-    // <div className="card mt-4">
-    //   <div className="card-body">
-    //     <h4>{post.id}</h4>
-
-    //     <p>{post.body}</p>
-    //     <p>name : {post.user.name}</p>
-    //     <p>email : {post.user.email}</p>
-
-    //     <div className="form-group">
-    //       <label>Comment: </label>
-    //       <input
-    //         type="text"
-    //         className="form-control"
-    //         placeholder="What do you think about this"
-    //         value={body}
-    //         onChange={(e) => setBody(e.target.value)}
-    //       />
-    //     </div>
-
-    //     <div className="form-group">
-    //       <button
-    //         className="btn btn-info"
-    //         onClick={() => console.log({ body })}
-    //       >
-    //         Share
-    //       </button>
-    //     </div>
-
-    //     <div>
-    //       <button
-    //         className="btn btn-danger"
-    //         onClick={() => onDeleteClick(post)}
-    //       >
-    //         Delete
-    //       </button>
-
-    //       <button className="btn btn-warning" onClick={handleUpdateClick}>
-    //         Update
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
