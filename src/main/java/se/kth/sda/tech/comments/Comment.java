@@ -21,7 +21,7 @@ public class Comment {
 
     private String authorName;
 
-    @ManyToOne
+    @OneToOne
     private Article article;
 
     @OneToOne

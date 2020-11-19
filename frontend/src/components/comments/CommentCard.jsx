@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import CommentsUpdateForm from "./CommentsUpdateForm";
 
-export default function CommentCard({ comment, onDeleteClick, onUpdateClick, user }) {
+export default function CommentCard({
+  comment,
+  onDeleteClick,
+  onUpdateClick,
+  user,
+}) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [body, setBody] = useState("");
 
@@ -18,45 +23,42 @@ export default function CommentCard({ comment, onDeleteClick, onUpdateClick, use
       }}
     />
   ) : (
+    <article className="comment">
+      <div className="comment-poster">
+        <i class="fas fa-user-alt"></i> {comment.user.name}
+      </div>
 
-      <div className="one-post card mt-4">
-        <div className="card-body">
-
-         <h5><i class="fas fa-comments"></i> {comment.body}</h5>
-
-         <div className="poster">
-          <i class="fas fa-user-alt"></i> {comment.user.name}(
-          <i class="fas fa-envelope"></i> {comment.user.email})
-         </div>
-         
-
+      <div className="one-comment">
+        <div className="comment-text">
+          <i class="far fa-comment"></i> {comment.body}
+        </div>
+        <div className="comment-option">
+          <button className="one-comment-button">
+            <i class="fas fa-thumbs-up"></i> 1
+          </button>
+          <button className="one-comment-button">
+            <i class="fas fa-thumbs-down"></i> 0
+          </button>
+          <i class="fas fa-envelope"></i> {comment.user.email}
           {comment.user.id === user.id ? (
-            <div>
+            <div className="comment-edit">
               <button
-                className="btn btn-danger"
+                className="one-comment-button"
                 onClick={() => onDeleteClick(comment)}
               >
-                Delete
-          </button>
+                <i class="fas fa-trash-alt"></i> Delete
+              </button>
 
-              <button className="btn btn-warning" onClick={handleUpdateClick}>
-                Edit
-          </button>
+              <button
+                className="one-comment-button"
+                onClick={handleUpdateClick}
+              >
+                <i class="fas fa-edit"> </i>Edit
+              </button>
             </div>
           ) : null}
-
-          {/* <div>
-                 <button className="one-comment-button">
-                   <i class="fas fa-thumbs-up"></i> {comment.reaction.numLike}
-                 </button>
-                <button className="one-comment-button">
-                  <i class="fas fa-thumbs-down"></i> {comment.reaction.numDislike}
-                </button>
-          </div> */}
-
-
+        </div>
       </div>
-      </div>
-    );
+    </article>
+  );
 }
-

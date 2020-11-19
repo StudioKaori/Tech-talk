@@ -39,7 +39,7 @@ public class CommentService {
     }
 
     public List<Comment> findAllByArticleId(Long articleId) {
-        return commentRepo.findAllByArticleId(articleId);
+        return commentRepo.findAllByArticleId(articleId, Sort.by(Sort.Direction.DESC, "id"));
     }
 
 }

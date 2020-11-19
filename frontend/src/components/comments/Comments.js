@@ -5,11 +5,13 @@ import CommentCard from "./CommentCard";
 
 import { useState, useEffect } from "react";
 
-export default function Comments() {
+export default function Comments({ post }) {
   const [comments, setComments] = useState([]);
   const [user, setUser] = useState("");
+  console.log(comments);
 
   const createComment = (commentData) => {
+    commentData.article = post;
     commentData.user = user;
     Api.post("/comments", commentData).then((res) => {
       setComments([res.data, ...comments]);
@@ -17,7 +19,9 @@ export default function Comments() {
   };
 
   const getAll = () => {
-    Api.get("/comments").then((res) => setComments(res.data));
+    Api.get("/comments?articleId=" + post.id).then((res) =>
+      setComments(res.data)
+    );
   };
 
   const updateComment = (updatedComment) => {
