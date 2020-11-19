@@ -27,8 +27,10 @@ export default function CommentsForm({ onCreateClick }) {
               Share
             </button>
           </div>
-        </div>
-      </div>
-    </div>
+          </div>
+          </div>
+          </div>
+      
+   
   );
 }
