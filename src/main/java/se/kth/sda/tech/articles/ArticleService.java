@@ -16,7 +16,7 @@ public class ArticleService {
 
 
     public List<Article> getAll() {
-        return articleRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        return articleRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     public List<Article> getAllSorted(String sort, String sortmode) throws IllegalArgumentException {

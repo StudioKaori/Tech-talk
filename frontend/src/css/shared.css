@@ -16,7 +16,7 @@ body {
   background-color: #000000;
 }
 
-button{
+button {
   margin-left: 1%;
 }
 
@@ -25,13 +25,16 @@ h2,
 h3,
 h4,
 h5,
-h6, p{
+h6 {
   font-family: "Gugi", cursive;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-h1, h4, label, p, .nav-link{
+h1,
+h4,
+label,
+.nav-link {
   color: var(--brand-color);
 }
 
