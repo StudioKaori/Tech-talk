@@ -8,7 +8,7 @@ export default function PostUpdateForm({ oldPost, onUpdateClick }) {
       <h4>What else do you wanna add?</h4>
       <div>
         <textarea
-          class="form-control"
+          className="form-control"
           placeholder="Name"
           value={body}
           onChange={(e) => setBody(e.target.value)}
@@ -22,32 +22,5 @@ export default function PostUpdateForm({ oldPost, onUpdateClick }) {
         </button>
       </div>
     </section>
-
-    // <div className="card">
-    //   <div className="card-body">
-    //     <h4 className="card-title">What else do you wanna add?</h4>
-    //     <div>
-    //       <div className="form-group">
-    //         <label>Updated Post: </label>
-    //         <input
-    //           type="text"
-    //           class="form-control"
-    //           placeholder="Name"
-    //           value={body}
-    //           onChange={(e) => setBody(e.target.value)}
-    //         />
-    //       </div>
-
-    //       <div className="form-group">
-    //         <button
-    //           className="btn btn-warning"
-    //           onClick={() => onUpdateClick({ ...oldPost, body })}
-    //         >
-    //           Update
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }

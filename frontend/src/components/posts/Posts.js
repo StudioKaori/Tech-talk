@@ -10,6 +10,7 @@ export default function Posts() {
   const [user, setUser] = useState("");
 
   const createPost = (postData) => {
+    setStatus(0);
     postData.user = user;
     Api.post("/articles", postData).then((res) => {
       setPosts([res.data, ...posts]);
@@ -41,11 +42,9 @@ export default function Posts() {
   }, []);
 
   useEffect(() => {
+    console.log(posts);
     if (posts.length !== 0) {
-      console.log("posts", posts);
       setStatus(1);
-    } else {
-      console.log("empty");
     }
   }, [posts]);
 
