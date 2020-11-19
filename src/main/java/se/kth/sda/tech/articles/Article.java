@@ -23,6 +23,7 @@ public class Article {
     private String authorName;
 
     @OneToMany
+    @JoinColumn(name = "article_id")
     private List<Comment> comments;
 
     @ManyToMany

@@ -21,7 +21,8 @@ public class Comment {
 
     private String authorName;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "article_id")
     private Article article;
 
     @OneToOne
