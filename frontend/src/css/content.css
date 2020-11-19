@@ -64,3 +64,19 @@
 .comment {
   display: flex;
 }
+
+.quick-post {
+  text-align: center;
+  font-size: var(--font-S);
+}
+
+.quick-post button {
+  background-color: var(--brand-color);
+  border: none;
+  margin-top: 20px;
+  background-color: var(--accent-color-dark);
+}
+
+.quick-post textarea {
+  background-color: var(--accent-color-dark);
+}
