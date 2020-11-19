@@ -8,13 +8,10 @@ import { useState, useEffect } from "react";
 export default function Comments({ post }) {
   const [comments, setComments] = useState([]);
   const [user, setUser] = useState("");
-  console.log(comments);
 
   const createComment = (commentData) => {
     commentData.article = post;
     commentData.user = user;
-    console.log("commentData", commentData);
-    console.log("commentDataarticle", commentData.article);
     Api.post("/comments", commentData).then((res) => {
       setComments([res.data, ...comments]);
     });
@@ -47,7 +44,7 @@ export default function Comments({ post }) {
   return (
     <section className="comments">
       <h6>
-        <i class="fas fa-comments"></i> Comments
+        <i className="fas fa-comments"></i> Comments
       </h6>
 
       <CommentsForm onCreateClick={createComment} />

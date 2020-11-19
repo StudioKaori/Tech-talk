@@ -18,10 +18,10 @@ function HomePage() {
           {/* 1-1 Post part */}
           <section className="post">
             <h4>
-              <i class="fas fa-newspaper"></i> Technical Interviewing 101
+              <i className="fas fa-newspaper"></i> Technical Interviewing 101
             </h4>
             <div className="poster">
-              <i class="fas fa-user-alt"></i> Kaori Persson
+              <i className="fas fa-user-alt"></i> Kaori Persson
             </div>
             <div className="post-text">
               The technical interview is unlike any other job interview: it’s a
@@ -35,16 +35,16 @@ function HomePage() {
             <div className="post-menu">
               <div className="reaction">
                 <button>
-                  <i class="fas fa-thumbs-up"></i> LIKE
+                  <i className="fas fa-thumbs-up"></i> LIKE
                 </button>
                 <button>
-                  <i class="fas fa-thumbs-down"></i> DISLIKE
+                  <i className="fas fa-thumbs-down"></i> DISLIKE
                 </button>
               </div>
 
               <div className="post-option">
                 <button>
-                  <i class="fas fa-envelope"></i> MAIL
+                  <i className="fas fa-envelope"></i> MAIL
                 </button>
               </div>
             </div>
@@ -53,25 +53,25 @@ function HomePage() {
           {/* 1-2 Comments to the post part */}
           <section className="comments">
             <h6>
-              <i class="fas fa-comments"></i> Comments
+              <i className="fas fa-comments"></i> Comments
             </h6>
             {/* 1-2-1 One comment */}
             <article className="comment">
               <div className="comment-poster">
-                <i class="fas fa-user-alt"></i> Leo
+                <i className="fas fa-user-alt"></i> Leo
                 <button>
-                  <i class="fas fa-envelope"></i> MAIL
+                  <i className="fas fa-envelope"></i> MAIL
                 </button>
               </div>
               <div className="comment-text">
-                <i class="far fa-comment"></i> Wow! great!
+                <i className="far fa-comment"></i> Wow! great!
               </div>
             </article>
 
             <div className="comment-post">
               <input placeholder="Comment to the post..."></input>
               <button>
-                <i class="fas fa-reply"></i>
+                <i className="fas fa-reply"></i>
               </button>
             </div>
           </section>

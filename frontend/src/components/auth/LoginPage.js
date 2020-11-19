@@ -21,15 +21,16 @@ function LoginPage() {
   };
 
   return (
-    <div className="body_wrapper">
+    <div>
       <Header />
-      
-      <div className="inputbox">
-        <LoginForm onSubmit={login} />
-      </div>
+      <div className="body_wrapper">
+        <div className="inputbox">
+          <LoginForm onSubmit={login} />
+        </div>
 
-      <div className="inputbox">
-        <RegisterForm onSubmit={register} />
+        <div className="inputbox">
+          <RegisterForm onSubmit={register} />
+        </div>
       </div>
     </div>
   );

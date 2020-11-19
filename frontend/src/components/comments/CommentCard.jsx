@@ -14,8 +14,6 @@ export default function CommentCard({
     setIsUpdating(true);
   };
 
-  console.log("comment", comment);
-
   return isUpdating ? (
     <CommentsUpdateForm
       oldComment={comment}
@@ -27,35 +25,35 @@ export default function CommentCard({
   ) : (
     <article className="comment">
       <div className="comment-poster">
-        <i class="fas fa-user-alt"></i> {comment.user.name}
+        <i className="fas fa-user-alt"></i> {comment.user.name}
       </div>
 
       <div className="one-comment">
         <div className="comment-text">
-          <i class="far fa-comment"></i> {comment.body}
+          <i className="far fa-comment"></i> {comment.body}
         </div>
         <div className="comment-option">
           <button className="one-comment-button">
-            <i class="fas fa-thumbs-up"></i> 1
+            <i className="fas fa-thumbs-up"></i> 1
           </button>
           <button className="one-comment-button">
-            <i class="fas fa-thumbs-down"></i> 0
+            <i className="fas fa-thumbs-down"></i> 0
           </button>
-          <i class="fas fa-envelope"></i> {comment.user.email}
+          <i className="fas fa-envelope"></i> {comment.user.email}
           {comment.user.id === user.id ? (
             <div className="comment-edit">
               <button
                 className="one-comment-button"
                 onClick={() => onDeleteClick(comment)}
               >
-                <i class="fas fa-trash-alt"></i> Delete
+                <i className="fas fa-trash-alt"></i> Delete
               </button>
 
               <button
                 className="one-comment-button"
                 onClick={handleUpdateClick}
               >
-                <i class="fas fa-edit"> </i>Edit
+                <i className="fas fa-edit"> </i>Edit
               </button>
             </div>
           ) : null}

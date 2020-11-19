@@ -119,6 +119,7 @@
   border-radius: 10px;
   font-size: var(--font-S);
   text-align: center;
+  width: 70px;
 }
 
 .comment-post {

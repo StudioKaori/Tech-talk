@@ -39,14 +39,14 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
       {/* 1-1 Post part */}
       <section className="post">
         <h4>
-          <i class="fas fa-newspaper"></i>{" "}
+          <i className="fas fa-newspaper"></i>{" "}
           {post.body.length > 55
             ? post.body.substring(0, 55) + "..."
             : post.body}
         </h4>
         <div className="poster">
-          <i class="fas fa-user-alt"></i> {post.user.name}(
-          <i class="fas fa-envelope"></i> {post.user.email})
+          <i className="fas fa-user-alt"></i> {post.user.name}(
+          <i className="fas fa-envelope"></i> {post.user.email})
         </div>
         <div className="post-text">
           <p>{post.body}</p>
@@ -54,21 +54,21 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
         <div className="post-menu">
           <div className="reaction">
             <button onClick={incrementLike}>
-              <i class="fas fa-thumbs-up"></i> {reaction.numLike}
+              <i className="fas fa-thumbs-up"></i> {reaction.numLike}
             </button>
             <button onClick={incrementDislike}>
-              <i class="fas fa-thumbs-down"></i> {reaction.numDislike}
+              <i className="fas fa-thumbs-down"></i> {reaction.numDislike}
             </button>
           </div>
 
           {post.user.id === user.id ? (
             <div className="post-option">
               <button onClick={() => onDeleteClick(post)}>
-                <i class="fas fa-trash-alt"></i> Delete
+                <i className="fas fa-trash-alt"></i> Delete
               </button>
 
               <button onClick={handleUpdateClick}>
-                <i class="fas fa-edit"></i> Edit
+                <i className="fas fa-edit"></i> Edit
               </button>
             </div>
           ) : null}

@@ -49,13 +49,13 @@ function Navbar({ onLogout }) {
 
           <div className="mobile-menu">
             <span onClick={() => openNav()}>
-              <i class="fas fa-bars"></i>
+              <i className="fas fa-bars"></i>
             </span>
           </div>
 
           <div id="mySidenav" className="header-menu">
             <div className="pc-icon">
-              <i class="fas fa-bars"></i>
+              <i className="fas fa-bars"></i>
             </div>
             <span className="closebtn" onClick={() => closeNav()}>
               &times;
@@ -72,9 +72,6 @@ function Navbar({ onLogout }) {
                   POSTS
                 </Link>
               </li>
-
-
-              
 
               <li>
                 <Link to="/chat" className="nav-link">

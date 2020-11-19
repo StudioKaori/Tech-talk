@@ -12,13 +12,13 @@ export default function CommentsForm({ onCreateClick }) {
         onChange={(e) => setBody(e.target.value)}
       />
       <button onClick={() => onCreateClick({ body })}>
-        <i class="fas fa-reply"></i>
+        <i className="fas fa-reply"></i>
       </button>
     </div>
 
     // <div className="one-post card mt-3">
     //   <div className="quick-post">
-    //     <h5 className="comment-post card-title"><i class="far fa-comment"></i> What do you think about this?</h5>
+    //     <h5 className="comment-post card-title"><i className="far fa-comment"></i> What do you think about this?</h5>
     //     <div>
     //       <div className="">
     //         <input

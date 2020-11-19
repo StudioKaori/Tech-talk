@@ -11,7 +11,7 @@ export default function CommentsUpdateForm({ oldComment, onUpdateClick }) {
           <div className="">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Name"
               value={body}
               onChange={(e) => setBody(e.target.value)}
