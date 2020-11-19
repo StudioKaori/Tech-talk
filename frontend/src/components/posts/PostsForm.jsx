@@ -9,7 +9,7 @@ export default function PostForm({ onCreateClick }) {
       <div>
         <textarea
           className="form-control"
-          placeholder="What is on your mind?"
+          placeholder="What's on your mind?"
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />

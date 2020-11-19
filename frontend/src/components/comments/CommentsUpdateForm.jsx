@@ -4,12 +4,11 @@ export default function CommentsUpdateForm({ oldComment, onUpdateClick }) {
   const [body, setBody] = useState(oldComment.body);
 
   return (
-    <div className="card">
+    <div className="quick-post">
       <div className="card-body">
         <h4 className="card-title">What else do you wanna add?</h4>
         <div>
-          <div className="form-group">
-            <label>Updated Comment: </label>
+          <div className="">
             <input
               type="text"
               class="form-control"

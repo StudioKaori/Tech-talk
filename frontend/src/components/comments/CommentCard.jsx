@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import CommentsUpdateForm from "./CommentsUpdateForm";
 
 export default function CommentCard({ comment, onDeleteClick, onUpdateClick, user }) {
@@ -9,8 +9,6 @@ export default function CommentCard({ comment, onDeleteClick, onUpdateClick, use
     setIsUpdating(true);
   };
 
-  console.log(comment);
-
   return isUpdating ? (
     <CommentsUpdateForm
       oldComment={comment}
@@ -20,47 +18,45 @@ export default function CommentCard({ comment, onDeleteClick, onUpdateClick, use
       }}
     />
   ) : (
-    <div className="card mt-4">
-      <div className="card-body">
-        <h4>{comment.id}</h4>
 
-        <p>{comment.body}</p>
-        <p>name : {comment.user.name}</p>
-        <p>email : {comment.user.email}</p>
+      <div className="one-post card mt-4">
+        <div className="card-body">
 
-        <div className="form-group">
-          <label>Comment: </label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="What do you think about this"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-        </div>
+         <h5><i class="fas fa-comments"></i> {comment.body}</h5>
 
-        <div className="form-group">
-          <button
-            className="btn btn-info"
-            onClick={() => console.log({ body })}
-          >
-            Share
-          </button>
-        </div>
+         <div className="poster">
+          <i class="fas fa-user-alt"></i> {comment.user.name}(
+          <i class="fas fa-envelope"></i> {comment.user.email})
+         </div>
+         
 
-        <div>
-          <button
-            className="btn btn-danger"
-            onClick={() => onDeleteClick(comment)}
-          >
-            Delete
+          {comment.user.id === user.id ? (
+            <div>
+              <button
+                className="btn btn-danger"
+                onClick={() => onDeleteClick(comment)}
+              >
+                Delete
           </button>
 
-          <button className="btn btn-warning" onClick={handleUpdateClick}>
-            Update
+              <button className="btn btn-warning" onClick={handleUpdateClick}>
+                Edit
           </button>
-        </div>
+            </div>
+          ) : null}
+
+          {/* <div>
+                 <button className="one-comment-button">
+                   <i class="fas fa-thumbs-up"></i> {comment.reaction.numLike}
+                 </button>
+                <button className="one-comment-button">
+                  <i class="fas fa-thumbs-down"></i> {comment.reaction.numDislike}
+                </button>
+          </div> */}
+
+
       </div>
-    </div>
-  );
+      </div>
+    );
 }
+
