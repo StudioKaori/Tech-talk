@@ -1,6 +1,7 @@
 package se.kth.sda.tech.comments;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import se.kth.sda.tech.model.ModelSort;
 
@@ -14,7 +15,7 @@ public class CommentService {
 
 
     public List<Comment> getAll() {
-        return commentRepo.findAll();
+        return commentRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     public List<Comment> getAllSorted(String sort, String sortmode) throws IllegalArgumentException {
