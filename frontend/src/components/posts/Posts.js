@@ -5,6 +5,7 @@ import PostCard from "./PostCard";
 import { useState, useEffect } from "react";
 
 export default function Posts() {
+  const [status, setStatus] = useState(0);
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
 
@@ -39,19 +40,30 @@ export default function Posts() {
     getAll();
   }, []);
 
+  useEffect(() => {
+    if (posts.length !== 0) {
+      console.log("posts", posts);
+      setStatus(1);
+    } else {
+      console.log("empty");
+    }
+  }, [posts]);
+
   return (
     <div className="body_wrapper">
       <PostForm onCreateClick={createPost} />
 
-      {posts.map((post) => (
-        <PostCard
-          key={post.id}
-          post={post}
-          onUpdateClick={updatePost}
-          onDeleteClick={deletePost}
-          user={user}
-        />
-      ))}
+      {status === 1
+        ? posts.map((post) => (
+            <PostCard
+              key={post.id}
+              post={post}
+              onUpdateClick={updatePost}
+              onDeleteClick={deletePost}
+              user={user}
+            />
+          ))
+        : null}
     </div>
   );
 }

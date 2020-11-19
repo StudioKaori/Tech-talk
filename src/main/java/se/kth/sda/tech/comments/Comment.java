@@ -78,14 +78,6 @@ public class Comment {
         this.authorName = authorName;
     }
 
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
     public User getUser() {
         return user;
     }
@@ -100,5 +92,9 @@ public class Comment {
 
     public void setReaction(Reaction reaction) {
         this.reaction = reaction;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }

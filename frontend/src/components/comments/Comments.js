@@ -13,6 +13,8 @@ export default function Comments({ post }) {
   const createComment = (commentData) => {
     commentData.article = post;
     commentData.user = user;
+    console.log("commentData", commentData);
+    console.log("commentDataarticle", commentData.article);
     Api.post("/comments", commentData).then((res) => {
       setComments([res.data, ...comments]);
     });

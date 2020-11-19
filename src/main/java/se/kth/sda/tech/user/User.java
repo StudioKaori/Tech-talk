@@ -34,9 +34,11 @@ public class User {
     private String name;
 
     @OneToMany
+    @JoinColumn(name = "user_id")
     private List<Article> article;
 
     @OneToMany
+    @JoinColumn(name = "user_id")
     private List<Comment> comments;
 
     // Hibernate needs a default constructor to function
@@ -82,24 +84,5 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
-    public List<Article> getArticle() {
-        return article;
-    }
-
-    @JsonIgnore
-    public void setArticle(List <Article> article) {
-        this.article = article;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    @JsonIgnore
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
 
 }
