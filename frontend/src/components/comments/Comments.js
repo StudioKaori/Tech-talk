@@ -43,7 +43,11 @@ export default function Comments({ post }) {
   }, []);
 
   return (
-    <div>
+    <section className="comments">
+      <h6>
+        <i class="fas fa-comments"></i> Comments
+      </h6>
+
       <CommentsForm onCreateClick={createComment} />
 
       {comments.map((comment) => (
@@ -55,6 +59,6 @@ export default function Comments({ post }) {
           user={user}
         />
       ))}
-    </div>
+    </section>
   );
 }

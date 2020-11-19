@@ -40,7 +40,7 @@ export default function Posts() {
   }, []);
 
   return (
-    <div>
+    <div className="body_wrapper">
       <PostForm onCreateClick={createPost} />
 
       {posts.map((post) => (

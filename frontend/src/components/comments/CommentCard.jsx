@@ -14,6 +14,8 @@ export default function CommentCard({
     setIsUpdating(true);
   };
 
+  console.log("comment", comment);
+
   return isUpdating ? (
     <CommentsUpdateForm
       oldComment={comment}

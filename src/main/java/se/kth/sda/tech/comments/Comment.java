@@ -92,4 +92,12 @@ public class Comment {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Reaction getReaction() {
+        return reaction;
+    }
+
+    public void setReaction(Reaction reaction) {
+        this.reaction = reaction;
+    }
 }
