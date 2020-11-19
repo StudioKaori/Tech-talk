@@ -22,7 +22,10 @@ export default function PostForm({ onCreateClick }) {
           <div className="form-group">
             <button
               className="btn btn-info"
-              onClick={() => onCreateClick({ body })}
+              onClick={() => {
+                onCreateClick({ body });
+                setBody("");
+              }}
             >
               Share
             </button>

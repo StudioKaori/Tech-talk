@@ -11,7 +11,7 @@ export default function Posts() {
   const createPost = (postData) => {
     postData.user = user;
     Api.post("/articles", postData).then((res) => {
-      setPosts([...posts, res.data]);
+      setPosts([res.data, ...posts]);
     });
   };
 
@@ -24,7 +24,9 @@ export default function Posts() {
   };
 
   const deletePost = (post) => {
-    Api.delete("/articles/" + post.id).then((r) => getAll());
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      Api.delete("/articles/" + post.id).then((r) => getAll());
+    }
   };
 
   // for user info
