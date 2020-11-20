@@ -7,7 +7,7 @@ export default function CommentCard({
   comment,
   onDeleteClick,
   onUpdateClick,
-  showDMPopup,
+  onShowDMPopup,
   user,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -43,8 +43,10 @@ export default function CommentCard({
   ) : (
     <article className="comment">
       {comment.user.id !== user.id ? (
-        <div className="comment-poster" onClick={() => showDMPopup()}>
-          <i className="fas fa-user-alt"></i> {comment.user.name}
+        <div className="comment-poster">
+          <button onClick={() => onShowDMPopup()}>
+            <i className="fas fa-user-alt"></i> {comment.user.name}
+          </button>
         </div>
       ) : (
         <div className="comment-poster">

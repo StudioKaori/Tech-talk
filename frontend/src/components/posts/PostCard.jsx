@@ -7,7 +7,7 @@ export default function PostCard({
   post,
   onDeleteClick,
   onUpdateClick,
-  showDMPopup,
+  onShowDMPopup,
   user,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -30,6 +30,10 @@ export default function PostCard({
     Api.put(url, reaction).then((r) => {
       setReaction(r.data);
     });
+  };
+
+  const showSomething = () => {
+    console.log("im here");
   };
 
   return isUpdating ? (
@@ -81,7 +85,7 @@ export default function PostCard({
         </div>
       </section>
 
-      <Comments post={post} />
+      <Comments post={post} onShowDMPopup={onShowDMPopup} />
     </article>
   );
 }

@@ -49,17 +49,13 @@ export default function Posts() {
   }, [posts]);
 
   // for dm
+
   const showDMPopup = () => {
     const dmPopup = document.getElementById("dmPopup");
-    console.log(("isDMPopupShowed": isDMPopupShowed));
-    if (isDMPopupShowed) {
-      dmPopup.classList.add("showPopup");
-      dmPopup.style.width = "100%";
-      isDMPopupShowed = false;
-    } else {
-      dmPopup.style.width = "0";
-      isDMPopupShowed = true;
-    }
+
+    dmPopup.classList.remove("hidePopup");
+    dmPopup.classList.add("showPopup");
+    //dmPopup.style.width = "100%";
   };
 
   return (
@@ -73,13 +69,16 @@ export default function Posts() {
               post={post}
               onUpdateClick={updatePost}
               onDeleteClick={deletePost}
+              onShowDMPopup={showDMPopup}
               user={user}
             />
           ))
         : null}
 
-      <div id="dmPopup">
-        <h1>mieru</h1>
+      <div id="dmPopup" className="hidePopup dmPopup">
+        <div className="popup_inner">
+          <h1>mieru</h1>
+        </div>
       </div>
     </div>
   );
