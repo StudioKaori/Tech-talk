@@ -25,12 +25,12 @@ public class DirectMessageController {
     public List<DirectMessage> findAllBySenderId(@PathVariable long senderId) {
         return directMessageService.findAllBySenderId(senderId);
     }
-//
-//    @PostMapping("")
-//    public DirectMessage create(@RequestBody DirectMessage newDirectMessage) {
-//        return directMessageService.create(newDirectMessage);
-//    }
-//
+
+    @PostMapping("")
+    public DirectMessage create(@RequestBody DirectMessage newDirectMessage) {
+        return directMessageService.create(newDirectMessage);
+    }
+
 //    @PutMapping("")
 //    public DirectMessage update(@RequestBody DirectMessage updatedDirectMessage) {
 //        return directMessageService.update(updatedDirectMessage);

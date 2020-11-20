@@ -17,6 +17,7 @@ public class DirectMessageService {
         return directMessageRepo.findAllBySenderId(senderId);
     }
 
+
 //    public List<DirectMessage> getAll() {
 //        return directMessageRepo.findAll();
 //    }
@@ -25,9 +26,9 @@ public class DirectMessageService {
 //        return directMessageRepo.findById(id);
 //    }
 //
-//    public DirectMessage create(DirectMessage newDirectMessage) {
-//        return directMessageRepo.save(newDirectMessage);
-//    }
+    public DirectMessage create(DirectMessage newDirectMessage) {
+        return directMessageRepo.save(newDirectMessage);
+    }
 //
 //    public DirectMessage update(DirectMessage updatedDirectMessage) {
 //        return directMessageRepo.save(updatedDirectMessage);

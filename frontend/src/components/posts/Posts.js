@@ -2,12 +2,14 @@ import React from "react";
 import Api from "../../api/Api";
 import PostForm from "./PostsForm";
 import PostCard from "./PostCard";
+import DMForm from "../DM/DMForm";
 import { useState, useEffect } from "react";
 
 export default function Posts() {
   const [status, setStatus] = useState(0);
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
+  let receiver = "";
 
   const createPost = (postData) => {
     setStatus(0);
@@ -36,6 +38,18 @@ export default function Posts() {
     Api.get("/user/loggedInUser").then((res) => setUser(res.data));
   };
 
+  const sendDM = (postData) => {
+    console.log(postData);
+    // Todo add reciever as well
+    // find a solution
+    postData.sender = user;
+    postData.receiver = receiver;
+    Api.post("/directMessages", postData).then((res) => {
+      //setPosts([res.data, ...posts]);
+      console.log(res.data);
+    });
+  };
+
   useEffect(() => {
     setUser(getUser());
     getAll();
@@ -50,11 +64,20 @@ export default function Posts() {
 
   // for dm
 
-  const showDMPopup = () => {
+  const showDMPopup = (receiver) => {
     const dmPopup = document.getElementById("dmPopup");
+    this.receiver = receiver;
 
     dmPopup.classList.remove("hidePopup");
     dmPopup.classList.add("showPopup");
+    //dmPopup.style.width = "100%";
+  };
+
+  const hideDMPopup = () => {
+    const dmPopup = document.getElementById("dmPopup");
+
+    dmPopup.classList.remove("showPopup");
+    dmPopup.classList.add("hidePopup");
     //dmPopup.style.width = "100%";
   };
 
@@ -76,8 +99,11 @@ export default function Posts() {
         : null}
 
       <div id="dmPopup" className="hidePopup dmPopup">
+        <div>
+          <button onClick={hideDMPopup}>close</button>
+        </div>
         <div className="popup_inner">
-          <h1>mieru</h1>
+          <DMForm onSendDMClick={sendDM} />
         </div>
       </div>
     </div>

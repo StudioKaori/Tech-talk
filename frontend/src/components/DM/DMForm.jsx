@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function DMForm() {
+export default function DMForm({ onSendDMClick }) {
   const [body, setBody] = useState("");
 
   return (
@@ -13,9 +13,9 @@ export default function DMForm() {
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-        {/* <button onClick={() => onCreateClick({ body })}>
+        <button onClick={() => onSendDMClick({ body, receiver })}>
           <i className="fas fa-reply"></i>
-        </button> */}
+        </button>
       </div>
     </section>
   );
