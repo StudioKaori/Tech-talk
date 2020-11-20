@@ -65,6 +65,7 @@ export default function Posts() {
   // for dm
 
   const showDMPopup = (receiver) => {
+    console.log("receiver", receiver);
     const dmPopup = document.getElementById("dmPopup");
     this.receiver = receiver;
 
