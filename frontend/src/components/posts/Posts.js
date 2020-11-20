@@ -64,10 +64,10 @@ export default function Posts() {
 
   // for dm
 
-  const showDMPopup = (receiver) => {
-    console.log("receiver", receiver);
+  const showDMPopup = () => {
+    //console.log("receiver", receiver);
     const dmPopup = document.getElementById("dmPopup");
-    this.receiver = receiver;
+    //this.receiver = receiver;
 
     dmPopup.classList.remove("hidePopup");
     dmPopup.classList.add("showPopup");
