@@ -61,23 +61,23 @@ function Navbar({ onLogout }) {
               &times;
             </span>
             <ul>
-              <li>
+              <li onClick={() => closeNav()}>
                 <Link to="/" className="nav-link">
                   HOME
                 </Link>
               </li>
 
-              <li>
+              <li onClick={() => closeNav()}>
                 <Link to="/posts" className="nav-link">
                   POSTS
                 </Link>
               </li>
 
-              <li>
+              {/* <li onClick={() => closeNav()}>
                 <Link to="/chat" className="nav-link">
                   CHAT
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <button className="logout-button" onClick={onLogout}>
               LOGOUT

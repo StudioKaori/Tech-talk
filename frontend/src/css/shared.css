@@ -108,6 +108,7 @@ ul {
 .body_wrapper {
   margin-top: 40px;
   padding-bottom: 50px;
+  padding: 0 25px;
 }
 
 @media (min-width: 750px) {
