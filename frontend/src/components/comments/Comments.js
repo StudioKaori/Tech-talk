@@ -5,7 +5,7 @@ import CommentCard from "./CommentCard";
 
 import { useState, useEffect } from "react";
 
-export default function Comments({ post }) {
+export default function Comments({ post, showDMPopup }) {
   const [comments, setComments] = useState([]);
   const [user, setUser] = useState("");
 

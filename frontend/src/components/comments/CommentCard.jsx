@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommentsUpdateForm from "./CommentsUpdateForm";
 import Api from "../../api/Api";
+import DMForm from "../DM/DMForm";
 
 export default function CommentCard({
   comment,
   onDeleteClick,
   onUpdateClick,
+  showDMPopup,
   user,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -40,9 +42,15 @@ export default function CommentCard({
     />
   ) : (
     <article className="comment">
-      <div className="comment-poster">
-        <i className="fas fa-user-alt"></i> {comment.user.name}
-      </div>
+      {comment.user.id !== user.id ? (
+        <div className="comment-poster" onClick={() => showDMPopup()}>
+          <i className="fas fa-user-alt"></i> {comment.user.name}
+        </div>
+      ) : (
+        <div className="comment-poster">
+          <i className="fas fa-user-alt"></i> {comment.user.name}
+        </div>
+      )}
 
       <div className="one-comment">
         <div className="comment-text">

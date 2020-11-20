@@ -48,6 +48,20 @@ export default function Posts() {
     }
   }, [posts]);
 
+  // for dm
+  const showDMPopup = () => {
+    const dmPopup = document.getElementById("dmPopup");
+    console.log(("isDMPopupShowed": isDMPopupShowed));
+    if (isDMPopupShowed) {
+      dmPopup.classList.add("showPopup");
+      dmPopup.style.width = "100%";
+      isDMPopupShowed = false;
+    } else {
+      dmPopup.style.width = "0";
+      isDMPopupShowed = true;
+    }
+  };
+
   return (
     <div className="body_wrapper">
       <PostForm onCreateClick={createPost} />
@@ -63,6 +77,10 @@ export default function Posts() {
             />
           ))
         : null}
+
+      <div id="dmPopup">
+        <h1>mieru</h1>
+      </div>
     </div>
   );
 }

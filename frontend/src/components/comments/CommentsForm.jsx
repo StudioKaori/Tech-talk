@@ -11,7 +11,12 @@ export default function CommentsForm({ onCreateClick }) {
         value={body}
         onChange={(e) => setBody(e.target.value)}
       />
-      <button onClick={() => onCreateClick({ body })}>
+      <button
+        onClick={() => {
+          onCreateClick({ body });
+          setBody("");
+        }}
+      >
         <i className="fas fa-reply"></i>
       </button>
     </div>

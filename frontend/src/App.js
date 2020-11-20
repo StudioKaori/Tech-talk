@@ -13,6 +13,7 @@ import HomePage from "./components/home/HomePage";
 import Posts from "./components/posts/Posts";
 import ChatPage from "./components/chat/ChatPage";
 import Comments from "./components/comments/Comments";
+import DMReceivers from "./components/DM/DMReceivers";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -33,8 +34,8 @@ function App() {
             <Comments />
           </Route>
 
-          <Route path="/chat">
-            <ChatPage />
+          <Route path="/dm">
+            <DMReceivers />
           </Route>
 
           <Route path="/">

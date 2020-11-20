@@ -3,7 +3,13 @@ import PostUpdateForm from "./PostUpdateForm";
 import Comments from "../comments/Comments";
 import Api from "../../api/Api";
 
-export default function PostCard({ post, onDeleteClick, onUpdateClick, user }) {
+export default function PostCard({
+  post,
+  onDeleteClick,
+  onUpdateClick,
+  showDMPopup,
+  user,
+}) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [body, setBody] = useState("");
   const [reaction, setReaction] = useState(post.reaction);
