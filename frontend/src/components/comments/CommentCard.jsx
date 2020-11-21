@@ -44,7 +44,7 @@ export default function CommentCard({
     <article className="comment">
       {comment.user.id !== user.id ? (
         <div className="comment-poster">
-          <button onClick={() => onShowDMPopup(comment.user.id)}>
+          <button onClick={() => onShowDMPopup}>
             <i className="fas fa-user-alt"></i> {comment.user.name}
           </button>
         </div>

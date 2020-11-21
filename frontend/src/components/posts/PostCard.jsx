@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import PostUpdateForm from "./PostUpdateForm";
 import Comments from "../comments/Comments";
 import Api from "../../api/Api";
@@ -30,10 +30,6 @@ export default function PostCard({
     Api.put(url, reaction).then((r) => {
       setReaction(r.data);
     });
-  };
-
-  const showSomething = () => {
-    console.log("im here");
   };
 
   return isUpdating ? (
