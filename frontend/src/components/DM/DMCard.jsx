@@ -27,7 +27,7 @@ export default function DMCard({ dm }) {
         <div className="dm-receiver">
           <i className="fas fa-user-alt"></i>
           <br />
-          {dm[0].receiver.name}
+          {dm[0].sender.name}
         </div>
 
         <div className="dm-text-wrapper">

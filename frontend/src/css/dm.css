@@ -34,6 +34,9 @@
   color: #803939;
 }
 
+.dm-list h6 {
+  display: inline-block;
+}
 .dm-date {
   display: block;
   margin-top: 5px;
@@ -65,4 +68,8 @@
 .margin-right {
   width: 80%;
   margin: 3px 0 30px auto;
+}
+
+.dm_title_flex {
+  display: flex;
 }

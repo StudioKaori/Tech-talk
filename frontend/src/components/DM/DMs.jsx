@@ -47,9 +47,7 @@ export default function DMs({ dmReceiver }) {
       "&receiverId=" +
       user.id;
     Api.put(url)
-      .then((res) => {
-        console.log("markUnread", res);
-      })
+      .then((res) => {})
       .catch((e) => console.log("markUnread catch"));
   };
 
@@ -62,7 +60,7 @@ export default function DMs({ dmReceiver }) {
       setStatus(1);
       // to scroll to the end
       let target = document.getElementById("scroll-inner");
-      target.scrollIntoView(false);
+      target.scrollTop = target.scrollHeight;
 
       markUnread();
     }
@@ -70,10 +68,19 @@ export default function DMs({ dmReceiver }) {
 
   return (
     <section className="dm-list">
-      <div className="close-button-wrapper">
-        <button className="close-button" onClick={() => setIsShowDMForm(false)}>
-          <i class="fas fa-times-circle"></i>
-        </button>
+      <div className="dm_title_flex"></div>
+      <div className="dm_title_flex">
+        <div>
+          <h4>{dmReceiver.name}</h4>
+        </div>
+        <div className="close-button-wrapper">
+          <button
+            className="close-button"
+            onClick={() => setIsShowDMForm(false)}
+          >
+            <i class="fas fa-times-circle"></i>
+          </button>
+        </div>
       </div>
       <div id="dm-one-list" className="dm-one-list">
         <div id="scroll-inner">
@@ -84,7 +91,6 @@ export default function DMs({ dmReceiver }) {
           )}
         </div>
       </div>
-
       <DMForm onClickSendDM={sendDM} />
     </section>
   );
