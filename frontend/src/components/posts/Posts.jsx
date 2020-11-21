@@ -1,15 +1,19 @@
-import React from "react";
+import { useState, useEffect } from "react";
+
 import Api from "../../api/Api";
 import PostForm from "./PostsForm";
 import PostCard from "./PostCard";
 import DMForm from "../DM/DMForm";
-import { useState, useEffect } from "react";
+
+import { useRecoilState } from "recoil";
+import { isShowDMFormState, dmReceiverState } from "../../js/state-information";
 
 export default function Posts() {
   const [status, setStatus] = useState(0);
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState("");
-  let receiver = "";
+  const [dmReceiver, setDmReceiver] = useRecoilState(dmReceiverState);
+  const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
   const createPost = (postData) => {
     setStatus(0);
@@ -38,18 +42,6 @@ export default function Posts() {
     Api.get("/user/loggedInUser").then((res) => setUser(res.data));
   };
 
-  const sendDM = (postData) => {
-    console.log(postData);
-    // Todo add reciever as well
-    // find a solution
-    postData.sender = user;
-    postData.receiver = receiver;
-    Api.post("/directMessages", postData).then((res) => {
-      //setPosts([res.data, ...posts]);
-      console.log(res.data);
-    });
-  };
-
   useEffect(() => {
     setUser(getUser());
     getAll();
@@ -64,14 +56,19 @@ export default function Posts() {
 
   // for dm
 
-  const showDMPopup = () => {
-    //console.log("receiver", receiver);
-    const dmPopup = document.getElementById("dmPopup");
-    //this.receiver = receiver;
+  useEffect(() => {
+    showDMPopup();
+  }, [isShowDMForm]);
 
-    dmPopup.classList.remove("hidePopup");
-    dmPopup.classList.add("showPopup");
-    //dmPopup.style.width = "100%";
+  const showDMPopup = () => {
+    const dmPopup = document.getElementById("dmPopup");
+    if (isShowDMForm) {
+      dmPopup.classList.remove("hidePopup");
+      dmPopup.classList.add("showPopup");
+    } else {
+      dmPopup.classList.remove("showPopup");
+      dmPopup.classList.add("hidePopup");
+    }
   };
 
   const hideDMPopup = () => {
@@ -93,7 +90,6 @@ export default function Posts() {
               post={post}
               onUpdateClick={updatePost}
               onDeleteClick={deletePost}
-              onShowDMPopup={showDMPopup}
               user={user}
             />
           ))
@@ -104,7 +100,7 @@ export default function Posts() {
           <button onClick={hideDMPopup}>close</button>
         </div>
         <div className="popup_inner">
-          <DMForm onSendDMClick={sendDM} />
+          <DMForm user={user} />
         </div>
       </div>
     </div>

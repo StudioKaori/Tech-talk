@@ -3,6 +3,7 @@ package se.kth.sda.tech.directMessages;
 import se.kth.sda.tech.user.User;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class DirectMessage {
@@ -11,6 +12,8 @@ public class DirectMessage {
     private Long id;
 
     private String message;
+    private Date date;
+    private Boolean isRead;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -21,6 +24,8 @@ public class DirectMessage {
     private User receiver;
 
     public DirectMessage() {
+        this.date = new Date();
+        this.isRead = false;
 
     }
 
@@ -54,5 +59,21 @@ public class DirectMessage {
 
     public void setReceiver(User receiver) {
         this.receiver = receiver;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Boolean getRead() {
+        return isRead;
+    }
+
+    public void setRead(Boolean read) {
+        isRead = read;
     }
 }

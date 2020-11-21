@@ -72,6 +72,7 @@ public class User {
         return password;
     }
 
+    @JsonIgnore
     @JsonProperty
     public void setPassword(String password) {
         this.password = password;

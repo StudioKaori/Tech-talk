@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Import custom styles for our application
@@ -11,7 +12,6 @@ import Navbar from "./components/layout/Navbar";
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import Posts from "./components/posts/Posts";
-import ChatPage from "./components/chat/ChatPage";
 import Comments from "./components/comments/Comments";
 import DMReceivers from "./components/DM/DMReceivers";
 
@@ -22,28 +22,30 @@ function App() {
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
-    <Router>
-      <Navbar onLogout={() => Auth.logout()} />
+    <RecoilRoot>
+      <Router>
+        <Navbar onLogout={() => Auth.logout()} />
 
-      <div>
-        <Switch>
-          <Route path="/posts">
-            <Posts />
-          </Route>
-          <Route path="/comments">
-            <Comments />
-          </Route>
+        <div>
+          <Switch>
+            <Route path="/posts">
+              <Posts />
+            </Route>
+            <Route path="/comments">
+              <Comments />
+            </Route>
 
-          <Route path="/dm">
-            <DMReceivers />
-          </Route>
+            <Route path="/dm">
+              <DMReceivers />
+            </Route>
 
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+            <Route path="/">
+              <HomePage />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </RecoilRoot>
   );
 
   // return depends on login status, if not logged in, return loginPage

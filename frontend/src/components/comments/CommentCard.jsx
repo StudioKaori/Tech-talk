@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CommentsUpdateForm from "./CommentsUpdateForm";
 import Api from "../../api/Api";
-import DMForm from "../DM/DMForm";
+
+import { useRecoilState } from "recoil";
+import { isShowDMFormState, dmReceiverState } from "../../js/state-information";
 
 export default function CommentCard({
   comment,
   onDeleteClick,
   onUpdateClick,
-  onShowDMPopup,
   user,
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [body, setBody] = useState("");
   const [reaction, setReaction] = useState(comment.reaction);
+  const [dmReceiver, setDmReceiver] = useRecoilState(dmReceiverState);
+  const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
   const handleUpdateClick = () => {
     setIsUpdating(true);
@@ -44,7 +47,12 @@ export default function CommentCard({
     <article className="comment">
       {comment.user.id !== user.id ? (
         <div className="comment-poster">
-          <button onClick={() => onShowDMPopup}>
+          <button
+            onClick={() => {
+              setIsShowDMForm(true);
+              setDmReceiver(comment.user);
+            }}
+          >
             <i className="fas fa-user-alt"></i> {comment.user.name}
           </button>
         </div>
