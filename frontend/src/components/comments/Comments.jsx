@@ -1,13 +1,14 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import CommentsForm from "./CommentsForm";
 import CommentCard from "./CommentCard";
 
-import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { userState } from "../../js/state-information";
 
 export default function Comments({ post }) {
   const [comments, setComments] = useState([]);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useRecoilState(userState);
 
   const createComment = (commentData) => {
     commentData.article = post;
@@ -33,13 +34,7 @@ export default function Comments({ post }) {
     Api.delete("/comments/" + comment.id).then((r) => getAll());
   };
 
-  // for user info
-  const getUser = () => {
-    Api.get("/user/loggedInUser").then((res) => setUser(res.data));
-  };
-
   useEffect(() => {
-    getUser();
     getAll();
   }, []);
 

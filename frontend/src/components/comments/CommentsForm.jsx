@@ -12,6 +12,7 @@ export default function CommentsForm({ onCreateClick }) {
         onChange={(e) => setBody(e.target.value)}
       />
       <button
+        className="button-s"
         onClick={() => {
           onCreateClick({ body });
           setBody("");

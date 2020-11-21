@@ -47,18 +47,20 @@ export default function CommentCard({
     <article className="comment">
       {comment.user.id !== user.id ? (
         <div className="comment-poster">
+          <i className="fas fa-user-alt"></i> {comment.user.name}
           <button
             onClick={() => {
               setIsShowDMForm(true);
               setDmReceiver(comment.user);
             }}
           >
-            <i className="fas fa-user-alt"></i> {comment.user.name}
+            <i className="fas fa-envelope"></i> DM
           </button>
         </div>
       ) : (
         <div className="comment-poster">
-          <i className="fas fa-user-alt"></i> {comment.user.name}
+          <i className="fas fa-user-alt"></i> {comment.user.name}{" "}
+          <span className="fontXXS">(You)</span>
         </div>
       )}
 

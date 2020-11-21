@@ -6,12 +6,16 @@ import PostCard from "./PostCard";
 import DMForm from "../DM/DMForm";
 
 import { useRecoilState } from "recoil";
-import { isShowDMFormState, dmReceiverState } from "../../js/state-information";
+import {
+  isShowDMFormState,
+  dmReceiverState,
+  userState,
+} from "../../js/state-information";
 
 export default function Posts() {
   const [status, setStatus] = useState(0);
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useRecoilState(userState);
   const [dmReceiver, setDmReceiver] = useRecoilState(dmReceiverState);
   const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
