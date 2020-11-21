@@ -1,8 +1,31 @@
 .dm-one {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 60px 1fr;
 }
 .dm-one-list {
   overflow-y: scroll;
-  height: 200px;
+  overflow-x: hidden;
+  height: 250px;
+}
+
+.dm-text-wrapper {
+  width: 100%;
+}
+
+.dm-text {
+  background-color: var(--brand-color);
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: var(--font-S);
+}
+
+.margin-left {
+  width: 80%;
+  margin: 3px auto 20px 0;
+}
+
+.margin-right {
+  width: 80%;
+  margin: 3px 0 20px auto;
 }

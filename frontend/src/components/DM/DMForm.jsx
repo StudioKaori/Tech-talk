@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import Api from "../../api/Api";
 import {
   isShowDMFormState,
   dmReceiverState,

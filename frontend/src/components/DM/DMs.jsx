@@ -46,20 +46,24 @@ export default function DMs({ dmReceiver }) {
   }, []);
 
   useEffect(() => {
-    console.log(dms);
     if (dms.length !== 0) {
       setStatus(1);
+      // to scroll to the end
+      let target = document.getElementById("scroll-inner");
+      target.scrollIntoView(false);
     }
   }, [dms]);
 
   return (
     <section className="dm-list">
-      <div className="dm-one-list">
-        {status === 1 ? (
-          dms.map((dm) => <DMCard key={dm.id} dm={[dm]} />)
-        ) : (
-          <h6>loading...</h6>
-        )}
+      <div id="dm-one-list" className="dm-one-list">
+        <div id="scroll-inner">
+          {status === 1 ? (
+            dms.map((dm) => <DMCard key={dm.id} dm={[dm]} />)
+          ) : (
+            <h6>loading...</h6>
+          )}
+        </div>
       </div>
 
       <DMForm onClickSendDM={sendDM} />
