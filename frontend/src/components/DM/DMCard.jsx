@@ -12,10 +12,11 @@ export default function DMCard({ dm }) {
       <div className="dm-one">
         <div>{dm[0].receiver.name}</div>
         <div>
-          {dm[0].date}
+          <span className="fontXXS">
+            {dm[0].date.substring(0, 19).replace("T", " ")}
+          </span>
           <div>{dm[0].message}</div>
         </div>
-        <div>{dm[0].sender.name}</div>
       </div>
     </article>
   );

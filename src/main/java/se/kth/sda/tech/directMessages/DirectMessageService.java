@@ -3,8 +3,10 @@ package se.kth.sda.tech.directMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DirectMessageService {
@@ -18,9 +20,11 @@ public class DirectMessageService {
     }
 
     public List<DirectMessage> findAllBySenderIdAndReceiverId(long senderId, long receiverId) {
-        return directMessageRepo.findAllBySenderIdAndReceiverId(senderId,receiverId);
-    }
+        List<DirectMessage> directMessages = directMessageRepo.findAllByReceiverIdAndSenderIdOrderByDateDesc(senderId,receiverId);
+        directMessages.addAll(directMessageRepo.findAllBySenderIdAndReceiverIdOrderByDateDesc(senderId,receiverId));
+        return directMessages.stream().sorted(Comparator.comparing(DirectMessage::getDate).reversed()).collect(Collectors.toList());
 
+    }
 
 //    public List<DirectMessage> getAll() {
 //        return directMessageRepo.findAll();
