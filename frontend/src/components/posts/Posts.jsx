@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import PostForm from "./PostsForm";
 import PostCard from "./PostCard";
-import DMForm from "../DM/DMForm";
+import DMs from "../DM/DMs";
 
 import { useRecoilState } from "recoil";
 import {
@@ -93,7 +93,7 @@ export default function Posts() {
 
       <div id="dmPopup" className="hidePopup dmPopup">
         <div className="popup_inner">
-          <DMForm user={user} />
+          {isShowDMForm ? <DMs user={user} dmReceiver={dmReceiver} /> : null}
         </div>
       </div>
     </div>

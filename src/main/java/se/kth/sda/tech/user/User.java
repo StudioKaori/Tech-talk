@@ -42,12 +42,10 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Comment> comments;
 
-    @OneToMany
-    @JoinColumn(name = "receiver_id")
+    @OneToMany(mappedBy = "receiver")
     private List<DirectMessage> receivedDirectMessages;
 
-    @OneToMany
-    @JoinColumn(name = "sender_id")
+    @OneToMany(mappedBy = "sender")
     private List<DirectMessage> sentDirectMessages;
 
 

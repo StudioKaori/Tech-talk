@@ -1,5 +1,6 @@
 package se.kth.sda.tech.directMessages;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.tech.user.User;
 
 import javax.persistence.*;
@@ -15,12 +16,14 @@ public class DirectMessage {
     private Date date;
     private Boolean isRead;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sender_id")
+    @JoinColumn(name = "sender_id", referencedColumnName = "id")
     private User sender;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "receiver_id")
+    @JoinColumn(name = "receiver_id", referencedColumnName = "id")
     private User receiver;
 
     public DirectMessage() {

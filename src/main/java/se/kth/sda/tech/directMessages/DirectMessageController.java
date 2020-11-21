@@ -26,6 +26,12 @@ public class DirectMessageController {
         return directMessageService.findAllBySenderId(senderId);
     }
 
+    @GetMapping("/one")
+    //  directMessages/one?senderId=&receiverId=
+    public List<DirectMessage> findAllBySenderIdAndReceiverId(@RequestParam long senderId, @RequestParam long receiverId) {
+        return directMessageService.findAllBySenderIdAndReceiverId(senderId,receiverId);
+    }
+
     @PostMapping("")
     public DirectMessage create(@RequestBody DirectMessage newDirectMessage) {
         return directMessageService.create(newDirectMessage);

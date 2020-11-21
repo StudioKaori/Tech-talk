@@ -17,6 +17,10 @@ public class DirectMessageService {
         return directMessageRepo.findAllBySenderId(senderId);
     }
 
+    public List<DirectMessage> findAllBySenderIdAndReceiverId(long senderId, long receiverId) {
+        return directMessageRepo.findAllBySenderIdAndReceiverId(senderId,receiverId);
+    }
+
 
 //    public List<DirectMessage> getAll() {
 //        return directMessageRepo.findAll();
