@@ -22,6 +22,16 @@
   padding: 10px;
   margin-right: 10px;
   font-size: var(--font-S);
+  position: relative;
+}
+
+.dm-read-sign {
+  position: absolute;
+  display: inline;
+  bottom: 5px;
+  right: 7px;
+  font-size: 2px;
+  color: #803939;
 }
 
 .dm-date {
