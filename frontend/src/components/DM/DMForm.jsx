@@ -1,28 +1,17 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import Api from "../../api/Api";
-import { isShowDMFormState, dmReceiverState } from "../../js/state-information";
+import {
+  isShowDMFormState,
+  dmReceiverState,
+  userState,
+} from "../../js/state-information";
 
-export default function DMForm({ user }) {
+export default function DMForm({ onClickSendDM }) {
   const [body, setBody] = useState("");
   const [dmReceiver, setDmReceiver] = useRecoilState(dmReceiverState);
   const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
-
-  const sendDM = () => {
-    // Todo add reciever as well
-    // find a solution
-    console.log(body);
-    let postData = {};
-    postData.message = body;
-    postData.sender = user;
-    postData.receiver = dmReceiver;
-    console.log(postData);
-    setIsShowDMForm(false);
-
-    Api.post("/directMessages", postData).then((res) => {
-      console.log(res.data);
-    });
-  };
+  const [user, setUser] = useRecoilState(userState);
 
   return (
     <section className="dm-form">
@@ -34,9 +23,18 @@ export default function DMForm({ user }) {
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-        <button onClick={() => sendDM()}>
+        <button
+          onClick={() => {
+            onClickSendDM(body);
+            setBody("");
+          }}
+        >
           <i className="fas fa-reply"></i>
         </button>
+
+        <div>
+          <button onClick={() => setIsShowDMForm(false)}>close</button>
+        </div>
       </div>
     </section>
   );
