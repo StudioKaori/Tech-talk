@@ -71,14 +71,6 @@ export default function Posts() {
     }
   };
 
-  const hideDMPopup = () => {
-    const dmPopup = document.getElementById("dmPopup");
-
-    dmPopup.classList.remove("showPopup");
-    dmPopup.classList.add("hidePopup");
-    //dmPopup.style.width = "100%";
-  };
-
   return (
     <div className="body_wrapper">
       <PostForm onCreateClick={createPost} />
@@ -96,9 +88,6 @@ export default function Posts() {
         : null}
 
       <div id="dmPopup" className="hidePopup dmPopup">
-        <div>
-          <button onClick={hideDMPopup}>close</button>
-        </div>
         <div className="popup_inner">
           <DMForm user={user} />
         </div>

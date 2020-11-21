@@ -9,19 +9,18 @@ export default function DMForm({ user }) {
   const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
   const sendDM = () => {
-    // Todo add reciever as well
-    // find a solution
-    console.log(body);
-    let postData = {};
-    postData.message = body;
-    postData.sender = user;
-    postData.receiver = dmReceiver;
-    console.log(postData);
-    setIsShowDMForm(false);
+    if (body !== "") {
+      let postData = {};
+      postData.message = body;
+      postData.sender = user;
+      postData.receiver = dmReceiver;
+      setIsShowDMForm(false);
+      setBody("");
 
-    Api.post("/directMessages", postData).then((res) => {
-      console.log(res.data);
-    });
+      Api.post("/directMessages", postData).then((res) => {
+        console.log(res.data);
+      });
+    }
   };
 
   return (
@@ -37,6 +36,10 @@ export default function DMForm({ user }) {
         <button onClick={() => sendDM()}>
           <i className="fas fa-reply"></i>
         </button>
+
+        <div>
+          <button onClick={() => setIsShowDMForm(false)}>close</button>
+        </div>
       </div>
     </section>
   );
