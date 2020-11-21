@@ -94,6 +94,39 @@ h5 {
   font-size: var(--font-XS);
 }
 
+.close-button-wrapper {
+  text-align: right;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.close-button {
+  background-color: transparent;
+  border: 0;
+  color: #ffffff;
+  font-size: var(--font-L);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color-dark);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #636363;
+}
+
 /* floating email button */
 
 .floating-email-btn {

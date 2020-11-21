@@ -8,24 +8,51 @@
   height: 250px;
 }
 
+.dm-receiver {
+  font-size: var(--font-S);
+  text-align: center;
+}
+
 .dm-text-wrapper {
   width: 100%;
 }
 
 .dm-text {
   background-color: var(--brand-color);
-  border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
   margin-right: 10px;
   font-size: var(--font-S);
 }
 
+.dm-date {
+  display: block;
+  margin-top: 5px;
+  margin-right: 10px;
+  color: #888;
+}
+
+.dm-date-right {
+  text-align: right;
+}
+
+.dm-date-left {
+  text-align: left;
+}
+
+.radius-left {
+  border-radius: 0 10px 10px 10px;
+}
+
 .margin-left {
   width: 80%;
-  margin: 3px auto 20px 0;
+  margin: 3px auto 30px 0;
+}
+
+.radius-right {
+  border-radius: 10px 0 10px 10px;
 }
 
 .margin-right {
   width: 80%;
-  margin: 3px 0 20px auto;
+  margin: 3px 0 30px auto;
 }

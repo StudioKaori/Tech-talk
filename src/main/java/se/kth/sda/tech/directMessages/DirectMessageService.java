@@ -22,7 +22,7 @@ public class DirectMessageService {
     public List<DirectMessage> findAllBySenderIdAndReceiverId(long senderId, long receiverId) {
         List<DirectMessage> directMessages = directMessageRepo.findAllByReceiverIdAndSenderIdOrderByDateDesc(senderId,receiverId);
         directMessages.addAll(directMessageRepo.findAllBySenderIdAndReceiverIdOrderByDateDesc(senderId,receiverId));
-        return directMessages.stream().sorted(Comparator.comparing(DirectMessage::getDate).reversed()).collect(Collectors.toList());
+        return directMessages.stream().sorted(Comparator.comparing(DirectMessage::getDate)).collect(Collectors.toList());
 
     }
 

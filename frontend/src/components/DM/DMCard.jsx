@@ -10,13 +10,17 @@ export default function DMCard({ dm }) {
   return dm[0].receiver.id === user.id ? (
     <article>
       <div className="dm-one">
-        <div>{dm[0].receiver.name}</div>
+        <div className="dm-receiver">
+          <i className="fas fa-user-alt"></i>
+          <br />
+          {dm[0].receiver.name}
+        </div>
         <div className="dm-text-wrapper">
           <div className="margin-left">
-            <span className="fontXXS">
+            <div className="dm-text radius-left">{dm[0].message}</div>
+            <span className="fontXXS dm-date dm-date-left">
               {dm[0].date.substring(0, 19).replace("T", " ")}
             </span>
-            <div className="dm-text">{dm[0].message}</div>
           </div>
         </div>
       </div>
@@ -27,10 +31,10 @@ export default function DMCard({ dm }) {
         <div> </div>
         <div className="dm-text-wrapper">
           <div className="margin-right">
-            <span className="fontXXS">
+            <div className="dm-text radius-right">{dm[0].message}</div>
+            <span className="fontXXS dm-date dm-date-right">
               {dm[0].date.substring(0, 19).replace("T", " ")}
             </span>
-            <div className="dm-text">{dm[0].message}</div>
           </div>
         </div>
       </div>

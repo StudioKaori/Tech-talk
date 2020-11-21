@@ -5,12 +5,13 @@ import DMCard from "./DMCard";
 import "../../css/dm.css";
 
 import { useRecoilState } from "recoil";
-import { userState } from "../../js/state-information";
+import { isShowDMFormState, userState } from "../../js/state-information";
 
 export default function DMs({ dmReceiver }) {
   const [status, setStatus] = useState(0);
   const [dms, setDms] = useState([]);
   const [user, setUser] = useRecoilState(userState);
+  const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
   const getAll = () => {
     const url =
@@ -26,8 +27,6 @@ export default function DMs({ dmReceiver }) {
       .catch((e) => console.log("no message"));
   };
 
-  console.log("dms", dms);
-
   const sendDM = (body) => {
     if (body !== "body") {
       let postData = {};
@@ -36,7 +35,7 @@ export default function DMs({ dmReceiver }) {
       postData.receiver = dmReceiver;
 
       Api.post("/directMessages", postData).then((res) => {
-        setDms([res.data, ...dms]);
+        setDms([...dms, res.data]);
       });
     }
   };
@@ -56,6 +55,11 @@ export default function DMs({ dmReceiver }) {
 
   return (
     <section className="dm-list">
+      <div className="close-button-wrapper">
+        <button className="close-button" onClick={() => setIsShowDMForm(false)}>
+          <i class="fas fa-times-circle"></i>
+        </button>
+      </div>
       <div id="dm-one-list" className="dm-one-list">
         <div id="scroll-inner">
           {status === 1 ? (
