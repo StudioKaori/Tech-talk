@@ -1,4 +1,8 @@
+.dm-one {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .dm-one-list {
   overflow-y: scroll;
-  height: 300px;
+  height: 200px;
 }

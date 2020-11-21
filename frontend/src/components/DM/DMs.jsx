@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import DMForm from "./DMForm";
 import DMCard from "./DMCard";
+import "../../css/dm.css";
 
 import { useRecoilState } from "recoil";
 import { userState } from "../../js/state-information";
 
 export default function DMs({ dmReceiver }) {
+  const [status, setStatus] = useState(0);
   const [dms, setDms] = useState([]);
   const [user, setUser] = useRecoilState(userState);
 
@@ -23,6 +25,8 @@ export default function DMs({ dmReceiver }) {
       })
       .catch((e) => console.log("no message"));
   };
+
+  console.log("dms", dms);
 
   const sendDM = (body) => {
     if (body !== "body") {
@@ -41,15 +45,24 @@ export default function DMs({ dmReceiver }) {
     getAll();
   }, []);
 
-  return (
-    <section className="comments">
-      <DMForm onClickSendDM={sendDM} />
+  useEffect(() => {
+    console.log(dms);
+    if (dms.length !== 0) {
+      setStatus(1);
+    }
+  }, [dms]);
 
+  return (
+    <section className="dm-list">
       <div className="dm-one-list">
-        {dms.map((dm) => (
-          <DMCard key={dm.id} dm={[dm]} />
-        ))}
+        {status === 1 ? (
+          dms.map((dm) => <DMCard key={dm.id} dm={[dm]} />)
+        ) : (
+          <h6>loading...</h6>
+        )}
       </div>
+
+      <DMForm onClickSendDM={sendDM} />
     </section>
   );
 }

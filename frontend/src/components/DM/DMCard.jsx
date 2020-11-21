@@ -9,9 +9,14 @@ export default function DMCard({ dm }) {
   console.log("card", dm);
   return (
     <article>
-      <div>{dm[0].message}</div>
-      <div></div>
-      <div></div>
+      <div className="dm-one">
+        <div>{dm[0].receiver.name}</div>
+        <div>
+          {dm[0].date}
+          <div>{dm[0].message}</div>
+        </div>
+        <div>{dm[0].sender.name}</div>
+      </div>
     </article>
   );
 }
