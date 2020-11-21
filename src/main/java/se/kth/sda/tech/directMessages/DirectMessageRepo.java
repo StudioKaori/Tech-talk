@@ -10,5 +10,6 @@ public interface DirectMessageRepo extends JpaRepository<DirectMessage, Long> {
     List<DirectMessage> findAllBySenderId(long senderId);
     List<DirectMessage> findAllBySenderIdAndReceiverIdOrderByDateDesc(long senderId,long receiverId);
     List<DirectMessage> findAllByReceiverIdAndSenderIdOrderByDateDesc(long senderId,long receiverId);
+    List<DirectMessage> findAllByReceiverIdAndSenderIdAndIsRead(long senderId,long receiverId, Boolean isRead);
 
 }
