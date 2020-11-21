@@ -40,6 +40,19 @@ export default function DMs({ dmReceiver }) {
     }
   };
 
+  const markUnread = () => {
+    const url =
+      "/directMessages/markRead?senderId=" +
+      dmReceiver.id +
+      "&receiverId=" +
+      user.id;
+    Api.put(url)
+      .then((res) => {
+        console.log("markUnread", res);
+      })
+      .catch((e) => console.log("markUnread catch"));
+  };
+
   useEffect(() => {
     getAll();
   }, []);
@@ -50,6 +63,8 @@ export default function DMs({ dmReceiver }) {
       // to scroll to the end
       let target = document.getElementById("scroll-inner");
       target.scrollIntoView(false);
+
+      markUnread();
     }
   }, [dms]);
 

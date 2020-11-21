@@ -27,14 +27,8 @@ public class DirectMessageService {
     }
 
     // for isRead
-    public List<DirectMessage> findAllByReceiverIdAndSenderIdAndIsRead(long senderId, long receiverId, Boolean isRead) {
-        return directMessageRepo.findAllByReceiverIdAndSenderIdAndIsRead(senderId, receiverId, isRead);
-    }
     public List<DirectMessage> markUnreadDMAdRead(long senderId, long receiverId) {
-        List<DirectMessage> unReadDMs = this.findAllByReceiverIdAndSenderIdAndIsRead(senderId, receiverId, false);
-        unReadDMs.stream().forEach((directMessage -> directMessage.setRead(true)));
-        // todo fix it later
-        return directMessageRepo.save(unReadDMs);
+        return directMessageRepo.markUnreadDMAdRead(senderId,receiverId);
     }
 
     //    public List<DirectMessage> getAll() {

@@ -37,6 +37,12 @@ public class DirectMessageController {
         return directMessageService.create(newDirectMessage);
     }
 
+    @PutMapping("/markRead")
+    //  directMessages/markRead?senderId=&receiverId=
+    public List<DirectMessage> create(@RequestParam long senderId, @RequestParam long receiverId) {
+        return directMessageService.markUnreadDMAdRead(senderId,receiverId);
+    }
+
 //    @PutMapping("")
 //    public DirectMessage update(@RequestBody DirectMessage updatedDirectMessage) {
 //        return directMessageService.update(updatedDirectMessage);
