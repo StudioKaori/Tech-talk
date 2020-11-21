@@ -12,7 +12,7 @@ export default function DMForm({ user }) {
     // Todo add reciever as well
     // find a solution
     console.log(body);
-    let postData = [];
+    let postData = {};
     postData.message = body;
     postData.sender = user;
     postData.receiver = dmReceiver;

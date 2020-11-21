@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 import se.kth.sda.tech.articles.Article;
 import se.kth.sda.tech.comments.Comment;
+import se.kth.sda.tech.directMessages.DirectMessage;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -41,6 +42,15 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<Comment> comments;
 
+    @OneToMany
+    @JoinColumn(name = "receiver_id")
+    private List<DirectMessage> receivedDirectMessages;
+
+    @OneToMany
+    @JoinColumn(name = "sender_id")
+    private List<DirectMessage> sentDirectMessages;
+
+
     // Hibernate needs a default constructor to function
     public User() {}
 
@@ -72,7 +82,6 @@ public class User {
         return password;
     }
 
-    @JsonIgnore
     @JsonProperty
     public void setPassword(String password) {
         this.password = password;
