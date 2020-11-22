@@ -13,7 +13,7 @@ export default function DMs({ dmReceiver }) {
   const [user, setUser] = useRecoilState(userState);
   const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
-  const getAll = () => {
+  const getAll = (resData) => {
     const url =
       "/directMessages/one?senderId=" +
       user.id +
@@ -21,8 +21,7 @@ export default function DMs({ dmReceiver }) {
       dmReceiver.id;
     Api.get(url)
       .then((res) => {
-        setDms(res.data);
-        console.log("dms", dms);
+        setDms(res.data, resData);
       })
       .catch((e) => console.log("no message"));
   };
@@ -35,7 +34,8 @@ export default function DMs({ dmReceiver }) {
       postData.receiver = dmReceiver;
 
       Api.post("/directMessages", postData).then((res) => {
-        setDms([...dms, res.data]);
+        //setDms([...dms, res.data]);
+        getAll(res.data);
       });
     }
   };
@@ -53,15 +53,19 @@ export default function DMs({ dmReceiver }) {
 
   useEffect(() => {
     getAll();
+    markUnread();
   }, []);
 
   useEffect(() => {
     if (dms.length !== 0) {
-      setStatus(1);
-      markUnread();
       scrollToTheEnd();
+      setStatus(1);
     }
   }, [dms]);
+
+  useEffect(() => {
+    scrollToTheEnd();
+  }, [status]);
 
   const scrollToTheEnd = () => {
     // to scroll to the end
@@ -88,11 +92,9 @@ export default function DMs({ dmReceiver }) {
       </div>
       <div id="dm-one-list" className="dm-one-list">
         <div id="scroll-inner">
-          {status === 1 ? (
-            dms.map((dm) => <DMCard key={dm.id} dm={[dm]} />)
-          ) : (
-            <h6>loading...</h6>
-          )}
+          {dms.map((dm) => (
+            <DMCard key={dm.id} dm={[dm]} />
+          ))}
         </div>
       </div>
       <DMForm onClickSendDM={sendDM} />
