@@ -3,7 +3,7 @@
   grid-template-columns: 60px 1fr;
 }
 .dm-one-list {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   height: 250px;
 }

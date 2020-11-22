@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
 import Api from "../../api/Api";
 import DMForm from "./DMForm";
 import DMCard from "./DMCard";
@@ -58,13 +58,17 @@ export default function DMs({ dmReceiver }) {
   useEffect(() => {
     if (dms.length !== 0) {
       setStatus(1);
-      // to scroll to the end
-      let target = document.getElementById("scroll-inner");
-      target.scrollTop = target.scrollHeight;
-
       markUnread();
+      scrollToTheEnd();
     }
   }, [dms]);
+
+  const scrollToTheEnd = () => {
+    // to scroll to the end
+    let target = document.getElementById("dm-one-list");
+    target.scrollTop = target.scrollHeight;
+    console.log("target", target.scrollHeight);
+  };
 
   return (
     <section className="dm-list">
