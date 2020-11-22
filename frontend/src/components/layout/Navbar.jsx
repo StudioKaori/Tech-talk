@@ -1,7 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 
+import { useRecoilState } from "recoil";
+import { userState } from "../../js/state-information";
+
+import DMNotification from "../DM/DMNotification";
+
 function Navbar({ onLogout }) {
+  const [isShowDMNotification, setIsShowDMNotification] = useState(false);
+  const [user, setUser] = useRecoilState(userState);
+
+  // for user info
+  const getUser = () => {
+    Api.get("/user/loggedInUser").then((res) => setUser(res.data));
+  };
+
+  useEffect(() => {
+    setUser(getUser());
+    resizeNav();
+  }, []);
+
   // for navigation drawer
   window.addEventListener(
     "resize",
@@ -10,10 +29,6 @@ function Navbar({ onLogout }) {
     },
     false
   );
-
-  useEffect(() => {
-    resizeNav();
-  }, []);
 
   function resizeNav() {
     const mySidenav = document.getElementById("mySidenav");
@@ -36,6 +51,41 @@ function Navbar({ onLogout }) {
       document.getElementById("mySidenav").style.width = "0";
     }
   }
+
+  // for DM notification
+
+  useEffect(() => {
+    const interval = 200000;
+    const dmNavbarTimer = setInterval(() => {
+      findAllUnfetchedDm();
+    }, interval);
+
+    return () => {
+      clearInterval(dmNavbarTimer);
+    };
+  }, [user]);
+
+  const findAllUnfetchedDm = () => {
+    const url = "/directMessages/findAllUnfetchedDm?userId=" + user.id;
+    Api.get(url).then((res) => {
+      if (res.data.length !== 0) {
+        console.log("res", res);
+        markDMFetched();
+        setIsShowDMNotification(true);
+      }
+    });
+    //.catch((e) => console.log("no new message"));
+  };
+
+  const markDMFetched = () => {
+    const url = "/directMessages/markAllDMFetched?senderId=" + user.id;
+    Api.put(url);
+  };
+
+  useEffect(() => {
+    const dmNotifyPopup = document.getElementById("dm-popup-notification");
+    dmNotifyPopup.style.width = "250px";
+  }, [isShowDMNotification]);
 
   return (
     <nav>
@@ -85,55 +135,14 @@ function Navbar({ onLogout }) {
           </div>
         </div>
       </div>
-    </nav>
 
-    /*
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        SDA starter
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      {/* dm notification */}
 
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/posts" className="nav-link">
-              Posts
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/chat" className="nav-link">
-              Chat
-            </Link>
-          </li>
-        </ul>
-
-        <button
-          className="btn btn-outline-info my-2 my-sm-0"
-          onClick={onLogout}
-        >
-          Logout
-        </button>
+      <div id="dm-popup-notification">
+        gnaeijrgae
+        <DMNotification />
       </div>
     </nav>
-    */
   );
 }
 

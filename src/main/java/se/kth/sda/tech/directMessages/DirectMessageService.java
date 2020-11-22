@@ -46,6 +46,18 @@ public class DirectMessageService {
     public List<DirectMessage> findUnreadDm(long userId, long dmReceiverId) {
         return directMessageRepo.findUnreadDm(userId,dmReceiverId);
     }
+
+    public List<DirectMessage> findAllUnreadDm(long userId) {
+        return directMessageRepo.findAllUnreadDm(userId);
+    }
+
+    public List<DirectMessage> findAllUnfetchedDm(long userId) {
+        return directMessageRepo.findAllUnfetchedDm(userId);
+    }
+
+    public void markAllDMFetched(long userId) {
+        directMessageRepo.markAllDMFetched(userId);
+    }
 //
 //    public DirectMessage update(DirectMessage updatedDirectMessage) {
 //        return directMessageRepo.save(updatedDirectMessage);

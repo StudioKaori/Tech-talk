@@ -1,4 +1,4 @@
-import { useState, useEffect, Component } from "react";
+import { useState, useEffect } from "react";
 import Api from "../../api/Api";
 import DMForm from "./DMForm";
 import DMCard from "./DMCard";

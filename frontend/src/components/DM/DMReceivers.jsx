@@ -17,13 +17,7 @@ export default function DMReceiver() {
     Api.get("/directMessages/" + user.id).then((res) => setDms(res.data));
   };
 
-  // for user info
-  const getUser = () => {
-    Api.get("/user/loggedInUser").then((res) => setUser(res.data));
-  };
-
   useEffect(() => {
-    setUser(getUser());
     getAll();
   }, []);
 

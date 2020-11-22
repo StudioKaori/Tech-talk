@@ -38,6 +38,18 @@ public class DirectMessageController {
         return directMessageService.findUnreadDm(userId,dmReceiverId);
     }
 
+    @GetMapping("/findAllNewDm")
+    //  directMessages/findAllNewDm?userId=
+    public List<DirectMessage> findAllNewDm(@RequestParam long userId) {
+        return directMessageService.findAllUnreadDm(userId);
+    }
+
+    @GetMapping("/findAllUnfetchedDm")
+    //  directMessages/findAllUnfetchedDm?userId=
+    public List<DirectMessage> findAllUnfetchedDm(@RequestParam long userId) {
+        return directMessageService.findAllUnfetchedDm(userId);
+    }
+
     @PostMapping("")
     public DirectMessage create(@RequestBody DirectMessage newDirectMessage) {
         return directMessageService.create(newDirectMessage);
@@ -47,6 +59,12 @@ public class DirectMessageController {
     //  directMessages/markRead?senderId=&receiverId=
     public List<DirectMessage> create(@RequestParam long senderId, @RequestParam long receiverId) {
         return directMessageService.markUnreadDMAdRead(senderId,receiverId);
+    }
+
+    @PutMapping("/markAllDMFetched")
+    //  directMessages/markAllDMFetched?senderId=
+    public void markAllDMFetched(@RequestParam long senderId) {
+        directMessageService.markAllDMFetched(senderId);
     }
 
 //    @PutMapping("")

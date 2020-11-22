@@ -15,6 +15,7 @@ public class DirectMessage {
     private String message;
     private Date date;
     private Boolean isRead;
+    private Boolean isFetched;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,6 +30,7 @@ public class DirectMessage {
     public DirectMessage() {
         this.date = new Date();
         this.isRead = false;
+        this.isFetched = false;
 
     }
 
@@ -78,5 +80,13 @@ public class DirectMessage {
 
     public void setRead(Boolean read) {
         isRead = read;
+    }
+
+    public Boolean getFetched() {
+        return isFetched;
+    }
+
+    public void setFetched(Boolean fetched) {
+        isFetched = fetched;
     }
 }
