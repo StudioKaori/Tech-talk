@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function DMNotification({ notification, onNotificationClick }) {
   return (
-    <div onClick={() => onNotificationClick}>
+    <div onClick={() => onNotificationClick(notification.sender)}>
       <h6>New DM</h6>
       <div>
         <i className="fas fa-user-alt"></i>

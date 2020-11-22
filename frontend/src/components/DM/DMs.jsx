@@ -5,13 +5,18 @@ import DMCard from "./DMCard";
 import "../../css/dm.css";
 
 import { useRecoilState } from "recoil";
-import { isShowDMFormState, userState } from "../../js/state-information";
+import {
+  isShowDMFormState,
+  dmReceiverState,
+  userState,
+} from "../../js/state-information";
 
-export default function DMs({ dmReceiver }) {
+export default function DMs() {
   const [status, setStatus] = useState(0);
   const [dms, setDms] = useState([]);
   const [user, setUser] = useRecoilState(userState);
   const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
+  const [dmReceiver, setDmReceiver] = useRecoilState(dmReceiverState);
 
   const getAll = (resData) => {
     const url =
@@ -19,6 +24,7 @@ export default function DMs({ dmReceiver }) {
       user.id +
       "&receiverId=" +
       dmReceiver.id;
+    console.log("url", url);
     Api.get(url)
       .then((res) => {
         setDms(res.data, resData);

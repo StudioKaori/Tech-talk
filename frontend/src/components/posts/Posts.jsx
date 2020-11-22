@@ -92,9 +92,7 @@ export default function Posts() {
         : null}
 
       <div id="dmPopup" className="hidePopup dmPopup">
-        <div className="popup_inner">
-          {isShowDMForm ? <DMs user={user} dmReceiver={dmReceiver} /> : null}
-        </div>
+        <div className="popup_inner">{isShowDMForm ? <DMs /> : null}</div>
       </div>
     </div>
   );

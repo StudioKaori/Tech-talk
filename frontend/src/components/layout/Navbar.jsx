@@ -65,7 +65,6 @@ function Navbar({ onLogout }) {
     const interval = 2000;
     const dmNavbarTimer = setInterval(() => {
       findAllUnfetchedDm();
-      console.log("timer");
     }, interval);
 
     return () => {
@@ -77,7 +76,6 @@ function Navbar({ onLogout }) {
     const url = "/directMessages/findAllUnfetchedDm?userId=" + user.id;
     Api.get(url).then((res) => {
       if (res.data.length !== 0) {
-        console.log("res", res.data);
         markDMFetched();
         setDmNotifications(res.data);
         setIsShowDMNotification(true);
@@ -104,8 +102,8 @@ function Navbar({ onLogout }) {
   }, [isShowDMNotification]);
 
   // link from notification
-  const showDmFromNotification = (receiverId) => {
-    setDmReceiver(receiverId);
+  const showDmFromNotification = (receiver) => {
+    setDmReceiver(receiver);
     setIsShowDMForm(true);
   };
 
