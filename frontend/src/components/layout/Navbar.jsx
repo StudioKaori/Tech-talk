@@ -159,7 +159,6 @@ function Navbar({ onLogout }) {
       {/* dm notification */}
 
       <div id="dm-popup-notification">
-        gnaeijrgae
         {isShowDMNotification
           ? dmNotifications.map((notification) => (
               <DMNotification

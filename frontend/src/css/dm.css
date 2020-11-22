@@ -76,14 +76,26 @@
 
 /* notification */
 #dm-popup-notification {
-  height: 300px;
+  height: 120px;
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
+  bottom: 0;
   right: 0;
-  background-color: var(--accent-color-dark);
+
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  background-color: var(--accent-color-dark);
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.dm-popup-notification-inner {
+  padding: 15px;
+  font-size: var(--font-S);
+}
+
+.dm-popup-notification-inner div {
+  margin-top: 8px;
 }
