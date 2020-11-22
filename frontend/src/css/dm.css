@@ -75,7 +75,7 @@
 }
 
 /* notification */
-.dm-popup-notification {
+#dm-popup-notification {
   height: 300px;
   width: 0;
   position: fixed;

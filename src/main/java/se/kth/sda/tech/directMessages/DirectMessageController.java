@@ -63,8 +63,8 @@ public class DirectMessageController {
 
     @PutMapping("/markAllDMFetched")
     //  directMessages/markAllDMFetched?senderId=
-    public void markAllDMFetched(@RequestParam long senderId) {
-        directMessageService.markAllDMFetched(senderId);
+    public List<DirectMessage> markAllDMFetched(@RequestParam long senderId) {
+        return directMessageService.markAllDMFetched(senderId);
     }
 
 //    @PutMapping("")

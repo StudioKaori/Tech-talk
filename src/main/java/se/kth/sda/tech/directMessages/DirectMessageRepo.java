@@ -19,8 +19,8 @@ public interface DirectMessageRepo extends JpaRepository<DirectMessage, Long> {
     @Query(value = "SELECT * FROM direct_message WHERE receiver_id=:userId AND is_fetched = false", nativeQuery = true)
     List<DirectMessage> findAllUnfetchedDm(@Param("userId") long userId);
 
-    @Query(value = "UPDATE direct_message SET is_fetched = false WHERE receiver_id=:userId", nativeQuery = true)
-    void markAllDMFetched(@Param("userId") long userId);
+    @Query(value = "UPDATE direct_message SET is_fetched = true WHERE receiver_id=:userId RETURNING *", nativeQuery = true)
+    List<DirectMessage> markAllDMFetched(@Param("userId") long userId);
 
     @Query(value = "SELECT * FROM direct_message WHERE receiver_id=:userId AND sender_id=:dmReceiverId AND is_read = false", nativeQuery = true)
     List<DirectMessage> findUnreadDm(@Param("userId") long userId, @Param("dmReceiverId") long dmReceiverId);

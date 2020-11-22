@@ -1,11 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function DMNotification() {
+export default function DMNotification({ notification, onNotificationClick }) {
   return (
-    <div id="dmPopup" className="hidePopup dmPopup">
-      <div className="popup_inner">
-        <h6>notification</h6>
+    <div onClick={() => onNotificationClick}>
+      <h6>New DM</h6>
+      <div>
+        <i className="fas fa-user-alt"></i>
+        {notification.sender.name}
       </div>
+      <div>{notification.message.substring(0, 30)}</div>
     </div>
   );
 }

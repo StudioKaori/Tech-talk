@@ -3,13 +3,20 @@ import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
-import { userState } from "../../js/state-information";
+import {
+  isShowDMFormState,
+  dmReceiverState,
+  userState,
+} from "../../js/state-information";
 
 import DMNotification from "../DM/DMNotification";
 
 function Navbar({ onLogout }) {
   const [isShowDMNotification, setIsShowDMNotification] = useState(false);
   const [user, setUser] = useRecoilState(userState);
+  const [dmNotifications, setDmNotifications] = useState([]);
+  const [dmReceiver, setDmReceiver] = useRecoilState(dmReceiverState);
+  const [isShowDMForm, setIsShowDMForm] = useRecoilState(isShowDMFormState);
 
   // for user info
   const getUser = () => {
@@ -55,9 +62,10 @@ function Navbar({ onLogout }) {
   // for DM notification
 
   useEffect(() => {
-    const interval = 200000;
+    const interval = 2000;
     const dmNavbarTimer = setInterval(() => {
       findAllUnfetchedDm();
+      console.log("timer");
     }, interval);
 
     return () => {
@@ -69,8 +77,9 @@ function Navbar({ onLogout }) {
     const url = "/directMessages/findAllUnfetchedDm?userId=" + user.id;
     Api.get(url).then((res) => {
       if (res.data.length !== 0) {
-        console.log("res", res);
+        console.log("res", res.data);
         markDMFetched();
+        setDmNotifications(res.data);
         setIsShowDMNotification(true);
       }
     });
@@ -79,13 +88,26 @@ function Navbar({ onLogout }) {
 
   const markDMFetched = () => {
     const url = "/directMessages/markAllDMFetched?senderId=" + user.id;
-    Api.put(url);
+    Api.put(url).then((res) => console.log("fetched dm marked as fetched."));
+  };
+
+  const closeDMNotification = () => {
+    document.getElementById("dm-popup-notification").style.width = "0";
+    setIsShowDMNotification(false);
   };
 
   useEffect(() => {
-    const dmNotifyPopup = document.getElementById("dm-popup-notification");
-    dmNotifyPopup.style.width = "250px";
+    if (isShowDMNotification) {
+      document.getElementById("dm-popup-notification").style.width = "250px";
+      setTimeout(closeDMNotification, 5000);
+    }
   }, [isShowDMNotification]);
+
+  // link from notification
+  const showDmFromNotification = (receiverId) => {
+    setDmReceiver(receiverId);
+    setIsShowDMForm(true);
+  };
 
   return (
     <nav>
@@ -140,7 +162,15 @@ function Navbar({ onLogout }) {
 
       <div id="dm-popup-notification">
         gnaeijrgae
-        <DMNotification />
+        {isShowDMNotification
+          ? dmNotifications.map((notification) => (
+              <DMNotification
+                key={notification.id}
+                notification={notification}
+                onNotificationClick={showDmFromNotification}
+              />
+            ))
+          : null}
       </div>
     </nav>
   );

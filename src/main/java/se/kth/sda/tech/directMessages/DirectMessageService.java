@@ -55,8 +55,8 @@ public class DirectMessageService {
         return directMessageRepo.findAllUnfetchedDm(userId);
     }
 
-    public void markAllDMFetched(long userId) {
-        directMessageRepo.markAllDMFetched(userId);
+    public List<DirectMessage> markAllDMFetched(long userId) {
+        return directMessageRepo.markAllDMFetched(userId);
     }
 //
 //    public DirectMessage update(DirectMessage updatedDirectMessage) {
