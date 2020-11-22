@@ -32,6 +32,12 @@ public class DirectMessageController {
         return directMessageService.findAllBySenderIdAndReceiverId(senderId,receiverId);
     }
 
+    @GetMapping("/findNewDm")
+    //  directMessages/findNewDm?userId=&dmReceiverId=
+    public List<DirectMessage> findNewDm(@RequestParam long userId, @RequestParam long dmReceiverId) {
+        return directMessageService.findUnreadDm(userId,dmReceiverId);
+    }
+
     @PostMapping("")
     public DirectMessage create(@RequestBody DirectMessage newDirectMessage) {
         return directMessageService.create(newDirectMessage);

@@ -42,6 +42,10 @@ public class DirectMessageService {
     public DirectMessage create(DirectMessage newDirectMessage) {
         return directMessageRepo.save(newDirectMessage);
     }
+
+    public List<DirectMessage> findUnreadDm(long userId, long dmReceiverId) {
+        return directMessageRepo.findUnreadDm(userId,dmReceiverId);
+    }
 //
 //    public DirectMessage update(DirectMessage updatedDirectMessage) {
 //        return directMessageRepo.save(updatedDirectMessage);

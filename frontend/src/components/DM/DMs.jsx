@@ -37,9 +37,11 @@ export default function DMs({ dmReceiver }) {
         //setDms([...dms, res.data]);
         getAll(res.data);
       });
+      markUnread();
     }
   };
 
+  //unmark read when send DM and close the DMs(this component)
   const markUnread = () => {
     const url =
       "/directMessages/markRead?senderId=" +
@@ -49,6 +51,33 @@ export default function DMs({ dmReceiver }) {
     Api.put(url)
       .then((res) => {})
       .catch((e) => console.log("markUnread catch"));
+  };
+
+  // for notification
+  const interval = 2000;
+  useEffect(() => {
+    const dmTimer = setInterval(() => {
+      findNewDm();
+    }, interval);
+
+    return () => {
+      clearInterval(dmTimer);
+    };
+  }, []);
+
+  const findNewDm = (resData) => {
+    const url =
+      "/directMessages/findNewDm?userId=" +
+      user.id +
+      "&dmReceiverId=" +
+      dmReceiver.id;
+    Api.get(url)
+      .then((res) => {
+        if (res.data.length !== 0) {
+          getAll();
+        }
+      })
+      .catch((e) => console.log("no new message"));
   };
 
   useEffect(() => {
@@ -71,7 +100,6 @@ export default function DMs({ dmReceiver }) {
     // to scroll to the end
     let target = document.getElementById("dm-one-list");
     target.scrollTop = target.scrollHeight;
-    console.log("target", target.scrollHeight);
   };
 
   return (
@@ -84,17 +112,20 @@ export default function DMs({ dmReceiver }) {
         <div className="close-button-wrapper">
           <button
             className="close-button"
-            onClick={() => setIsShowDMForm(false)}
+            onClick={() => {
+              markUnread();
+              setIsShowDMForm(false);
+            }}
           >
-            <i class="fas fa-times-circle"></i>
+            <i className="fas fa-times-circle"></i>
           </button>
         </div>
       </div>
       <div id="dm-one-list" className="dm-one-list">
         <div id="scroll-inner">
-          {dms.map((dm) => (
-            <DMCard key={dm.id} dm={[dm]} />
-          ))}
+          {status === 1
+            ? dms.map((dm) => <DMCard key={dm.id} dm={[dm]} />)
+            : null}
         </div>
       </div>
       <DMForm onClickSendDM={sendDM} />
