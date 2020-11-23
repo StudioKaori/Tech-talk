@@ -21,8 +21,6 @@ export default function DMReceiver() {
     getAll();
   }, []);
 
-  console.log("dm receiver", dms);
-
   return (
     <div className="body_wrapper">
       {/* <dmsForm onCreateClick={createDM} />

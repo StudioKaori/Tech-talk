@@ -24,7 +24,7 @@ export default function DMs() {
       user.id +
       "&receiverId=" +
       dmReceiver.id;
-    console.log("url", url);
+
     Api.get(url)
       .then((res) => {
         setDms(res.data, resData);

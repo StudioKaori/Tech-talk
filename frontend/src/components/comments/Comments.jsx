@@ -25,7 +25,6 @@ export default function Comments({ post }) {
   };
 
   const updateComment = (updatedComment) => {
-    console.log(updatedComment);
     updatedComment.article = post;
     Api.put("/comments/", updatedComment).then((r) => getAll());
   };

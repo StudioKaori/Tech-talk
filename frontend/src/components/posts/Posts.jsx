@@ -52,7 +52,6 @@ export default function Posts() {
   }, []);
 
   useEffect(() => {
-    console.log(posts);
     if (posts.length !== 0) {
       setStatus(1);
     }
